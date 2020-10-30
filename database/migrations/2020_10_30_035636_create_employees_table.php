@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender');
             $table->string('username');
             $table->string('password');
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreignId('position_id')->constrained('positions');
             $table->timestamps();
         });
     }
