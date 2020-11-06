@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDailyTimeRecordTable extends Migration
+class CreateDailyTimeRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateDailyTimeRecordTable extends Migration
      */
     public function up()
     {
-        Schema::create('daily_time_record', function (Blueprint $table) {
+        Schema::create('daily_time_records', function (Blueprint $table) {
             $table->date('date');
-            $table->primary('date');
             $table->foreignId('employee_id')->constrained('employees');
             $table->time('shift_start');
             $table->time('shift_end');
@@ -35,6 +34,6 @@ class CreateDailyTimeRecordTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daily_time_record');
+        Schema::dropIfExists('daily_time_records');
     }
 }

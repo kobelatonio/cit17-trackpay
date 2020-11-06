@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeductiblesTable extends Migration
+class CreateDeductibleRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDeductiblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('deductibles', function (Blueprint $table) {
-            $table->primary('date');
+        Schema::create('deductible_records', function (Blueprint $table) {
+            $table->date('date');
             $table->foreignId('employee_id')->constrained('employees');
             $table->foreignId('deductible_id')->constrained('deductibles');
-            $table->integer('is_deducted:');
+            $table->integer('is_deducted');
             $table->integer('deduction_amount');
             $table->timestamps();
     });
@@ -30,6 +30,6 @@ class CreateDeductiblesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deductibles');
+        Schema::dropIfExists('deductible_records');
     }
 }

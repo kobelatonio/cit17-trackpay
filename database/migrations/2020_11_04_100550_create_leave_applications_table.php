@@ -14,12 +14,12 @@ class CreateLeaveApplicationsTable extends Migration
     public function up()
     {
         Schema::create('leave_applications', function (Blueprint $table) {
-            $table->bigIncrements('employee_id');
-            $table->unsignedBigInteger('leave_category_id')->constrained();
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('leave_category_id')->constrained('leave_categories');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('status', 10);
-            $table->string('reason_for_rejection', 20);
+            $table->string('status');
+            $table->string('reason_for_rejection');
            
         });
     }
