@@ -94,7 +94,7 @@
 	<h1>Leave Applications</h1>
 </div></a>
 
-<a class="button-link" onclick="onClick2()" style="cursor: pointer;"><div class="button {{ Request::is('admin/deductibles*') ? 'active' : '' }}">
+<a class="button-link" onclick="onClick2()" style="cursor: pointer;"><div class="button {{ Request::is('admin/deductible*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -115,8 +115,8 @@
 	<h1>Deductibles</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/deductibles-records') }}"><div class="button hidden2">
-	<h1>Deductibles Records</h1>
+<a class="button-link" href="{{ url('/admin/deductible-records') }}"><div class="button hidden2">
+	<h1>Deductible Records</h1>
 </div></a>
 
 <a class="button-link" href="{{ url('/admin/payroll') }}"><div class="button {{ Request::is('admin/payroll*') ? 'active' : '' }}">

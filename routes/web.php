@@ -45,8 +45,8 @@ Route::get('/admin/deductibles', function () {
     return view('deductibles');
 });
 
-Route::get('/admin/deductibles-records', function () {
-    return view('deductibles-records');
+Route::get('/admin/deductible-records', function () {
+    return view('deductible-records');
 });
 
 Route::get('/admin/payroll', function () {
