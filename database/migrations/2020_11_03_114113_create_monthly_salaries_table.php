@@ -16,11 +16,11 @@ class CreateMonthlySalariesTable extends Migration
         Schema::create('monthly_salaries', function (Blueprint $table) {
             $table->date('date');
             $table->foreignId('employee_id')->constrained('employees');
-            $table->decimal('gross_pay', 10, 5);
-            $table->decimal('total_deductibles', 10, 5);
-            $table->decimal('first_cutoff_pay', 10, 5);
-            $table->decimal('second_cutoff_pay', 10, 5);
-            $table->decimal('net_pay', 10, 5);
+            $table->decimal('gross_pay', 10, 2);
+            $table->decimal('total_deductibles', 10, 2);
+            $table->decimal('first_cutoff_pay', 10, 2);
+            $table->decimal('second_cutoff_pay', 10, 2);
+            $table->decimal('net_pay', 10, 2);
             $table->timestamps();
         }); 
     }

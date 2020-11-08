@@ -19,8 +19,8 @@ class CreateLeaveApplicationsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('status');
-            $table->string('reason_for_rejection');
-           
+            $table->string('reason_for_rejection')->nullable();
+            $table->timestamps();
         });
     }
 

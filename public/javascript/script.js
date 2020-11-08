@@ -26,22 +26,32 @@ function onClick2() {
 	bool2 = !bool2;
 }
 
-function updateValues() {
-	var month = new Date().getMonth() + 1;
-	var year = new Date().getFullYear();
-	var day = String(new Date().getDate()).padStart(2, '0');
-	if(document.getElementById('month')) {
-		document.getElementById('month').value = year + "-" + month;
-	}
-	if(document.getElementById('date')) {
-		document.getElementById('date').value = year + "-" + month + "-" + day;
-	}
-	if(document.getElementById('payroll')){
+var style = "<style> table {width: 100%; font: 12px Helvetica;} table, th, td {border: solid 1px #DDD; border-collapse: collapse; padding: 2px 3px; text-align: center;} h1 {font: 20px Helvetica; text-align: center;}</style>";
+var months = ["Jan", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+function printTable() {
 		var payroll = document.getElementById('payroll');
-		var sum = 0;
-		for(var i = 1; i < payroll.rows.length - 1; i++) {
-            sum += parseInt(payroll.rows[i].cells[5].innerHTML.substring(4, payroll.rows[i].cells[5].innerHTML.length).replace(',', ''));
-        }
-        document.getElementById("total").innerHTML = "Php " + sum.toLocaleString();
-	}
+		clone = payroll.cloneNode(true);
+		var row = clone.rows; 
+		for (var i = 0; i < row[0].cells.length; i++) { 
+			var str = row[0].cells[i].innerHTML; 
+			if (str.search("Payslip") != -1) {  
+				for (var j = 0; j < row.length - 1; j++) { 
+					row[j].deleteCell(i); 
+				} 
+			} 
+		} 
+		var date = document.getElementById("date").value;
+		var list = date.split("-");
+		var header = "<h1>Payroll Report for the Month of " + months[list[1]-1] + ", Year " + list[0] + "</h1>";
+		var win = window.open('', '', "width=" + screen.availWidth + ",height=" + screen.availHeight);
+		win.document.write(style + header + clone.outerHTML);
+		win.document.close();
+		win.print();
+}
+
+function printPayslip() {
+	var win = window.open('', '', "width=" + screen.availWidth + ",height=" + screen.availHeight);
+	win.document.write(style + "<h1>" + document.getElementById("header").innerHTML + "</h1>" + document.getElementById('payroll').outerHTML);
+	win.document.close();
+	win.print();
 }

@@ -16,8 +16,8 @@ class CreateAnnualLeavesTable extends Migration
         Schema::create('annual_leaves', function (Blueprint $table) {
             $table->foreignId('employee_id')->constrained('employees');
             $table->foreignId('leave_category_id')->constrained('leave_categories');
-            $table->decimal('leave_day_spent', 10, 3);
-            $table->decimal('leave_day_left', 10 , 3);
+            $table->decimal('leave_days_spent', 10, 3);
+            $table->decimal('leave_days_left', 10 , 3);
             $table->timestamps();
         });
     }

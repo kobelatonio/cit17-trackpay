@@ -17,8 +17,8 @@ class CreateDeductibleRecordsTable extends Migration
             $table->date('date');
             $table->foreignId('employee_id')->constrained('employees');
             $table->foreignId('deductible_id')->constrained('deductibles');
-            $table->integer('is_deducted');
-            $table->integer('deduction_amount');
+            $table->boolean('is_deducted');
+            $table->decimal('deduction_amount', 10, 2);
             $table->timestamps();
     });
 }

@@ -13,15 +13,15 @@ TrackPay - Admin Home
 	<div class="row">
 		<div class="box">
 			<h1>Total number<br>of employees</h1>
-			<h2>5</h2>
+			<h2>{{ $totalEmployees }}</h2>
 		</div>
 		<div class="box">
 			<h1>Punctuality for<br>current month</h1>
-			<h2>85%</h2>
+			<h2>{{ $punctuality }}%</h2>
 		</div>
 		<div class="box">
 			<h1>Days before<br>payday</h1>
-			<h2>2</h2>
+			<h2>{{ $daysBeforePayday }}</h2>
 		</div>
 	</div>
 	<div class="birthdays">
@@ -29,14 +29,12 @@ TrackPay - Admin Home
 		<tr>
 			<th colspan="2">Employees with birthday in current month</th>
 		</tr>
+		@foreach($employeesWithBirthday as $employee)
 		<tr>
-			<td>Joely Russo</td>
-			<td>November 11, 2020</td>
+			<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+			<td>{{ date('F d, Y', strtotime($employee->birthdate)) }}</td>
 		</tr>
-		<tr>
-			<td>Ziva Caldwell</td>
-			<td>November 26, 2020</td>
-		</tr>
+		@endforeach
 	</table>
 	</div>
 </div>

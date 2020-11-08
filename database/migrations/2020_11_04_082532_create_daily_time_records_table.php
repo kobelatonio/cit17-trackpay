@@ -18,10 +18,10 @@ class CreateDailyTimeRecordsTable extends Migration
             $table->foreignId('employee_id')->constrained('employees');
             $table->time('shift_start');
             $table->time('shift_end');
-            $table->time('time_in');
-            $table->time('time_out');
-            $table->integer('minutes_late');
-            $table->integer('hours_worked');
+            $table->time('time_in')->nullable();
+            $table->time('time_out')->nullable();
+            $table->integer('minutes_late')->nullable();
+            $table->integer('hours_worked')->nullable();
             $table->string('remarks');
             $table->timestamps();
         });
