@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +29,6 @@ Route::get('/admin/positions', function () {
     return view('positions');
 });
 
-Route::get('/admin/leaves-categories', function () {
-    return view('leaves-categories');
-});
 
 Route::get('/admin/leaves-annual', function () {
     return view('leaves-annual');
@@ -60,3 +57,24 @@ Route::get('/employee', function () {
 Route::get('/admin/login', function () {
     return view('login-admin');
 });
+//CRUD for leaves_categories
+//Index
+Route::get('/admin/leaves-categories','LeaveCategoriesController@index');
+
+//Create
+Route::get('/admin/leaves-categories/create','LeaveCategoriesController@create');
+
+//Store
+Route::post('/admin/leaves-categories/store','LeaveCategoriesController@store');
+
+//Edit
+Route::get('/admin/leaves-categories/{id}/edit','LeaveCategoriesController@edit');
+
+//Update
+Route::put('/admin/leaves-categories/{id}','LeaveCategoriesController@update');
+
+//Delete
+Route::delete('/admin/leaves-categories/{id}','LeaveCategoriesController@delete');
+
+//Show
+Route::get('/admin/leaves-categories/{id}','LeaveCategoriesController@show');
