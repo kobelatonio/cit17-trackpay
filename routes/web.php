@@ -60,3 +60,20 @@ Route::get('/employee', function () {
 Route::get('/admin/login', function () {
     return view('login-admin');
 });
+
+
+//CRUD for leave_application
+
+//index - read
+Route::get('/admin/leaves-applications', 'LeaveApplicationController@index');
+//Create
+//Route::get('admin/leaves-applications', 'LeaveApplicationController@create');
+//Store
+//Route::post('admin/leaves-applications', 'LeaveApplicationController@store');
+//Show
+//Route::get('admin/leaves-applications{$leaves', 'LeaveApplicationController');
+//Edit
+//Route::get
+//Update
+
+//Delete
