@@ -51,9 +51,31 @@ Route::get('/admin/leaves-applications', function () {
     return view('leaves-applications');
 });
 
-Route::get('/admin/deductibles', function () {
-    return view('deductibles');
-});
+
+
+//CRUD for deductibles
+Route::get('/admin/deductibles', 'DeductiblesController@index');
+
+//create
+Route::get('/admin/deductibles/create', 'DeductiblesController@create');
+
+//show
+Route::get('/admin/deductibles/{deductibles}', 'DeductiblesController@show');
+
+//store
+Route::get('/admin/deductibles', 'DeductiblesController@store');
+
+//edit
+Route::get('/admin/deductibles/{deductible}/edit', 'DeductiblesController@edit');
+
+//update
+Route::put('/admin/deductibles/{deductible}', 'DeductiblesController@update');
+
+//delete
+Route::delete('/admin/deductibles/{deductible}', 'DeductiblesController@delete');
+
+
+
 
 // Read of Deductible Records
 Route::get('/admin/deductible-records', 'DeductibleRecordsController@index');

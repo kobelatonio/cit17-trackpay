@@ -309,6 +309,16 @@ button.delete {
 	margin-left: 5px;
 }
 
+button.show {
+	background: #0F5EF7;
+	color: white;
+	padding: 8px 21px;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+
+
+
 /*** LOGIN PAGES ***/
 
 .forms {
