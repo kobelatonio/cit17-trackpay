@@ -14,6 +14,7 @@ class CreateDailyTimeRecordsTable extends Migration
     public function up()
     {
         Schema::create('daily_time_records', function (Blueprint $table) {
+            $table->id();
             $table->date('date');
             $table->foreignId('employee_id')->constrained('employees');
             $table->time('shift_start');

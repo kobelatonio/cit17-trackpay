@@ -16,35 +16,38 @@ class TimeEntriesController extends Controller
 
     public function storeOrUpdate() {
         $credentials = Employee::where(['username' => request()->username, 'password' => request()->password])->first();
-        date_default_timezone_set('Asia/Manila');
         request()['date'] = date("Y-m-d");
         request()['time'] = date("H:i:s");
         if($credentials) {
             $dtrUpdate = DailyTimeRecord::where(['employee_id' => $credentials->id, 'date' => request()->date])->first();
+            // does dtr exists
             if($dtrUpdate) {
+                // has time in
                 if($dtrUpdate->time_in) {
-                    return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name." has timed in already!");
+                    $message_extension = " has timed in already at ".request()->time;
                 } else {
-                    if(request()->time > $dtrUpdate->shift_start) {
-                        $minutes_late = Carbon::parse(request()->time)->diffInMinutes(Carbon::parse($dtrUpdate->shift_start));
-                        $dtrUpdate->update(['time_in' => request()->time, 'remarks' => 'Late', 'minutes_late' => $minutes_late]);
-                    } else {
-                        $dtrUpdate->update(['time_in' => request()->time, 'remarks' => 'Early', 'minutes_late' => 0]);
-                    }
-                    return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name." timed in at ".request()->time);
+                    $time_in_remarks = $this->getTimeInRemarks($credentials->employee_id,  request()['time']);
+                    $minutes_late = $this->getMinutesLate($credentials->employee_id, request()->time);
+                    $dtrUpdate->update(['time_in' => request()->time, 
+                        'remarks' => $time_in_remarks, 
+                        'minutes_late' => $minutes_late
+                    ]);
+                    $message_extension = " has timed in at ".request()->time;
                 }
+                return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name.$message_extension);
             } else {
                 $dtr = new DailyTimeRecord;
                 $dtr->time_in = request()->time;
                 $dtr->date = request()->date;
                 $dtr->employee_id = $credentials->id;
                 $position = Employee::where('employees.id', $credentials->id)
-                ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
+                    ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
                 $dtr->shift_start = $position->shift_start;
                 $dtr->shift_end = $position->shift_end;
-                $dtr->remarks = request()->time > $position->shift_start ? 'Late' : 'Early';
-                $minutes_late = Carbon::parse(request()->time)->diffInMinutes(Carbon::parse($position->shift_start));
-                $dtr->minutes_late = $minutes_late;
+
+                $dtr->remarks = $this->getTimeInRemarks($dtr->employee_id, $dtr->time_in);
+                $dtr->minutes_late = $this->getMinutesLate($dtr->employee_id, $dtr->time_in);
+                
                 $dtr->save();
                 return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name." timed in at ".request()->time);
             }
@@ -53,9 +56,26 @@ class TimeEntriesController extends Controller
         }
     }
 
+    public function getTimeInRemarks($employee_id, $time_in)
+    {
+        $position = Employee::where('employees.id', $employee_id)
+                    ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
+        return $time_in > $position->shift_start ? 'Late' : 'Early';
+    }
+
+    public function getMinutesLate($employee_id, $time_in)
+    {
+        $position = Employee::where('employees.id', $employee_id)
+                    ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
+        $minutes_late = Carbon::parse($time_in)->diffInMinutes(Carbon::parse($position->shift_start));
+        if($minutes_late > 0) {
+            return $minutes_late;
+        }
+        return 0;
+    }
+
     public function update() {
         $credentials = Employee::where(['username' => request()->username, 'password' => request()->password])->first();
-        date_default_timezone_set('Asia/Manila');
         request()['date'] = date("Y-m-d");
         request()['time'] = date("H:i:s");
         if($credentials) {
