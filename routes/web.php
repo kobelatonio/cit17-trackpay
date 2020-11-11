@@ -60,3 +60,25 @@ Route::get('/employee', function () {
 Route::get('/admin/login', function () {
     return view('login-admin');
 });
+
+//Positions
+//Index
+Route::get('/admin/positions','PositionsController@index');
+
+//create
+Route::get('/admin/positions/create','PositionsController@create');
+
+//show
+Route::get('/admin/positions,{positions}', 'PositionsController@show');
+
+//store
+Route::post('/admin/positions','PositionsController@store');
+
+//edit
+Route::get('/admin/positions/{positions}/edit','PositionsController@edit');
+
+//update
+Route::put('/admin/positions/{positions}','PositionsController@update');
+
+//delete
+Route::delete('/admin/positions/{positions}','PositionsController@delete');

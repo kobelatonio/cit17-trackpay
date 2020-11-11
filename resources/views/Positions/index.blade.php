@@ -20,7 +20,17 @@
 				<td>{{ $positions->Monthly Salary}}</td>
 				<td>{{ $positions->Shift Start}}</td>
 				<td>{{ $positions->Shift End}}</td>
+				<td> 
+					<a href="/admin/positions/{{ $positions->id}}"> Show</a>
+					<a href="/admin/positions/{{ $positions->id}}/edit">Edit</a>
+					<form method='POST' action='/admin/positions/{{$positions->id}}'>
+						@method('DELETE')
+						<button type="submit">Selete</button>
+					</form>
+				</td>
 			</tr>
+			@endforeach
 		</tbody>
+	</table>
 	
 </div>
