@@ -30,7 +30,7 @@ SEARCH FILTERS
 @endsection
 
 @section('addbtn')
-<button class="add" style="margin-top: 20px;">Add a leave application</button>
+<button class="add" style="margin-top: 20px;"></button>
 <a href="">
 @endsection
 
@@ -46,36 +46,4 @@ SEARCH FILTERS
 			<th>Reason for Rejection</th>
 			<th>Settings</th>
 		</tr>
-
-		<tr>
-			<td>Joely Russo</td>
-			<td>Sick Leave</td>
-			<td>04-15-2020</td>
-			<td>04-17-2020</td>
-			<td>Rejected</td>
-			<td>Low manpower</td>
-			<td>
-				<a href ="/admin/leaves_applications"><button class="edit">Edit</button>
-				<a href ="/admin/leaves_applications"><button class="edit">Show</button>
-				<a href ="/admin/leaves_applications"><button class="delete">Delete</button>
-			</td>
-		</tr>
-		<tr>
-			<td>Ziva Caldwell</td>
-			<td>Sick Leave</td>
-			<td>08-04-2020</td>
-			<td>08-07-2020</td>
-			<td>Approved</td>
-			<td>-</td>
-			<td>
-
-				<a href ="/admin/leaves_applications"><button class="edit">Edit</button>
-				<a href ="/admin/leaves_applications"><button class="edit">Show</button>
-				<a href ="/admin/leaves_applications"><button class="delete">Delete</button>
-
-
-			</td>
-		</tr>
-	</table>
-</div>
 @endsection
