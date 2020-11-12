@@ -20,7 +20,7 @@
 	<h1>Homepage</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/dtr') }}"><div class="button {{ Request::is('admin/dtr*') ? 'active' : '' }}">
+<a class="button-link" href="{{ url('/admin/daily_time_records') }}"><div class="button {{ Request::is('admin/daily_time_records*') ? 'active' : '' }}">
 	<svg class="svg" version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -69,7 +69,7 @@
 <h1>Job Positions</h1>
 </div></a>
 
-<a class="button-link" onclick="onClick()" style="cursor: pointer;"><div class="button {{ Request::is('admin/leaves*') ? 'active' : '' }}">
+<a class="button-link" onclick="onClick()" style="cursor: pointer;"><div class="button {{ Request::is('admin/leave*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -82,15 +82,15 @@
 <h1>Leaves</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leaves-categories') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/admin/leave_categories') }}"><div class="button hidden">
 	<h1>Leave Categories</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leaves-annual') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/admin/leave_annual') }}"><div class="button hidden">
 	<h1>Annual Leaves</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leaves-applications') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/admin/leave_applications') }}"><div class="button hidden">
 	<h1>Leave Applications</h1>
 </div></a>
 
@@ -115,7 +115,7 @@
 	<h1>Deductibles</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/deductible-records') }}"><div class="button hidden2">
+<a class="button-link" href="{{ url('/admin/deductible_records') }}"><div class="button hidden2">
 	<h1>Deductible Records</h1>
 </div></a>
 

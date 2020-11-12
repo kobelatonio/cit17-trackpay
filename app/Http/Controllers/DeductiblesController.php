@@ -3,45 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Deductible;
 
 class DeductiblesController extends Controller
 {
 	public function index()
 	{
-		$deductibles=Deductible::all();
+		$deductibles = Deductible::get();
 		return view ('deductibles.index', compact('deductibles'));
 	}
 
-	public function show( Deductible $deductible)
+	public function show(Deductible $deductible)
 	{
 		return view('deductibles.show', compact('deductible'));
 	}
 
 	public function create()
 	{
-		$deductibles=['GSIS', 'Pag-ibig', 'SSS'];
-		return view('deductibles.create', compact('types'));
+		return view('deductibles.create');
 	}
 
 	public function store()
 	{
-		$deductible=new Deductible;
-		$deductible->type=request()->type;
-		$deductible->percentage=request()->percentage;
+		$deductible = new Deductible;
+		$deductible->type = request()->type;
+		$deductible->percentage = request()->percentage;
 		$deductible->save();
 		return redirect('/admin/deductibles');
 	}
 
 	public function edit(Deductible $deductible)
 	{
-		$types=['GSIS', 'Pag-ibig', 'SSS'];
-		return view('deductibles.edit', compact('deductible', 'types'));
+		return view('deductibles.edit', compact('deductible'));
 	}
 
 	public function update(Deductible $deductible)
 	{
-		$deductible->type=request()->type;
-		$deductible->percentage=request()->percentage;
+		$deductible->type = request()->type;
+		$deductible->percentage = request()->percentage;
 		$deductible->save();
 		return redirect('/admin/deductibles');
 	}
@@ -49,6 +48,6 @@ class DeductiblesController extends Controller
 	public function delete(Deductible $deductible)
 	{
 		$deductible->delete();
+		return redirect('/admin/deductibles');
 	}
-
 }

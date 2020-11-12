@@ -46,10 +46,22 @@ body {
 	margin-right: 10px;
 }
 
-button.logout {
+a.logout {
 	padding: 10px 15px;
 	border-radius: 5px;
 	margin-left: 15px;
+	font-size: 13px;
+	background: #E2E3E8;
+}
+
+a.time-entry {
+	padding: 10px 15px;
+	border-radius: 5px;
+	margin-left: 15px;
+	font-size: 13px;
+	color: #fff;
+	background: #0f5ef7;
+	text-decoration: none;
 }
 
 /*** MAIN ***/
@@ -188,12 +200,21 @@ table.birthday th {
 	margin-bottom: 5px;
 }
 
-.filters-box {
+.filters-box, .edit-form {
 	background: #EEF1FB;
 	border-radius: 10px;
 	padding: 15px 30px;
 	display: inline-block;
 	margin-right: 20px;
+}
+
+.edit-form input, .edit-form select {
+	margin-bottom: 15px;
+}
+
+.edit-form input[type=submit] {
+	margin-bottom: 0px;
+	cursor: pointer;
 }
 
 label {
@@ -222,7 +243,7 @@ input[type=submit] {
 	margin-right: 0px;
 }
 
-button.add {
+a.add {
 	background: #E2E3E8;
 	color: #0F5EF7;
 	font-weight: 400;
@@ -230,6 +251,9 @@ button.add {
 	display: inline;
 	border-radius: 10px;
 	align-self: center;
+	font-size: 14px;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .filters-box h1 {
@@ -248,6 +272,10 @@ input#employee_id, input#deductible_id {
 	width: 40px;
 }
 
+.alert {
+	align-self: center;
+}
+
 /*** TABLES ***/
 
 table {
@@ -260,9 +288,9 @@ th {
 	background: #0F5EF7;
 	color: white;
 	font-weight: 300;
-	padding: 15px 25px;
+	padding: 15px 20px;
 	text-align: left;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 table th:first-child {
@@ -283,8 +311,8 @@ table tr:last-child td:last-child {
 
 td {
 	background: #EEF1FB;
-	padding: 15px 25px;
-	font-size: 14px;
+	padding: 15px 20px;
+	font-size: 13px;
 }
 
 td.total, td#total {
@@ -292,32 +320,37 @@ td.total, td#total {
 	background: #E2E3E8;
 }
 
-button.edit, a.edit {
-	background: #0F5EF7;
+td.settings {
+	display: flex;
+  	flex-wrap: wrap;
+  	gap: 5px;
+}
+
+a.edit, a.show, button.delete, input.delete {
+	flex: 1;
 	color: white;
-	padding: 8px 30px;
 	border-radius: 5px;
 	text-decoration: none;
 	font-weight: 300;
+	font-size: 13px;
 }
 
-button.delete {
-	background: #808CA3;
-	color: white;
-	padding: 8px 21px;
-	border-radius: 5px;
-	margin-left: 5px;
-}
-
-button.show {
+a.edit {
 	background: #0F5EF7;
-	color: white;
-	padding: 8px 21px;
-	border-radius: 5px;
-	margin-left: 5px;
+	padding: 8px 30px;
+	display: inline-block;
 }
 
+a.show {
+	background: #6797f5;
+	padding: 8px 25px;
+}
 
+button.delete, input.delete {
+	background: #808CA3;
+	padding: 8px 21px;
+	cursor: pointer;
+}
 
 /*** LOGIN PAGES ***/
 
@@ -357,6 +390,7 @@ button.show {
 .login-form h1 {
 	color: white;
 	font-size: 24px;
+	margin-bottom: 15px;
 }
 
 .login-form input[type=text], .login-form input[type=password] {

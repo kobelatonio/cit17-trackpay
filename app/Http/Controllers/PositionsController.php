@@ -2,56 +2,56 @@
 
 namespace App\Http\Controllers;
 
-use App\positions;
+use App\Position;
 use Illuminate\Http\Request;
 
 class PositionsController extends Controller
 {
-    public function index ()
+    public function index()
     {
-    	$positions=Positions::all();
-    	return  view('positions.index',compact(Positions));
+        $positions = Position::get();
+        return view('positions.index', compact('positions'));
     }
 
-    public function create ()
+    public function create()
     {
-    	return view('positions.create');
+        return view('positions.create');
     }
 
-    public function show (Positions $Positions)
+    public function show(Position $position)
     {
-    	return view('positions.show',compact('positions'));
+        return view('positions.show', compact('position'));
     }
 
-    public function store ()
+    public function store()
     {
-    	$positions = new Positions;
-    	$positions->Title = request()->Title;
-    	$positions->MonthlySalary = request()->MonthlySalary;
-    	$positions->StartShift = request()->StartShift;
-    	$positions->EndShift = request()->EndShift;
-
-    	return redirect('/admin/positions');
+        $position = new Position;
+        $position->title = request()->title;
+        $position->monthly_salary = request()->monthly_salary;
+        $position->shift_start = request()->shift_start;
+        $position->shift_end = request()->shift_end;
+        $position->save();
+        return redirect('/admin/positions');
     }
 
-    public function edit(Positions $positions)
+    public function edit(Position $position)
     {
-    	return view('positions.edit',compact('positions'));
+        return view('positions.edit', compact('position'));
     }
 
-    public function update ()
+    public function update(Position $position)
     {
-    	$positions->Title = request()->Title;
-    	$positions->MonthlySalary = request()->MonthlySalary;
-    	$positions->StartShift = request()->StartShift;
-    	$positions->EndShift = request()->EndShift;
-
-    	return redirect('/admin/positions');
+        $position->title = request()->title;
+        $position->monthly_salary = request()->monthly_salary;
+        $position->shift_start = request()->shift_start;
+        $position->shift_end = request()->shift_end;
+        $position->save();
+        return redirect('/admin/positions');
     }
 
-    public function delete (Positions $positions)
+    public function delete(Position $position)
     {
-    	$positions->delete();
-    	return redirect('/admin/positions');
+        $position->delete();
+        return redirect('/admin/positions');
     }
 }

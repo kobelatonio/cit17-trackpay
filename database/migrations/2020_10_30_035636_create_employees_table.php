@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender');
             $table->string('username');
             $table->string('password');
-            $table->foreignId('position_id')->constrained('positions');
+            $table->foreignId('position_id')->constrained('positions')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +35,8 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('employees');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

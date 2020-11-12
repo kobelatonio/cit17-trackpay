@@ -12,130 +12,141 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Index of Employee Time In/Out
+
+////////// EMPLOYEE TIME IN/OUT
+
+// Index 
 Route::get('/time-entry', 'TimeEntriesController@index');
-
-// Store and Update of Daily Time Records
+// Store and Update
 Route::put('/time-entry/storeOrUpdate', 'TimeEntriesController@storeOrUpdate');
-
-// Update of Daily Time Records
+// Update
 Route::put('/time-entry/update', 'TimeEntriesController@update');
 
+////////// ADMIN LOGIN
+
+// Index
+Route::get('/admin/login', 'AdminLoginController@index');
+
+////////// ADMIN HOMEPAGE
+
+// Index
 Route::get('/admin/home', 'HomeController@index');
 
-// Read of Daily Time Records
-Route::any('/admin/dtr', 'DailyTimeRecordsController@index');
+////////// DAILY TIME RECORDS
 
-// Store of Daily Time Records
-Route::put('/admin/dtr/store', 'DailyTimeRecordsController@store');
+// Index
+Route::get('/admin/daily_time_records', 'DailyTimeRecordsController@index');
+// Store
+Route::post('/admin/daily_time_records/store', 'DailyTimeRecordsController@store');
 
-Route::get('/admin/employees', function () {
-    return view('employees');
-});
+////////// EMPLOYEES
 
-Route::get('/admin/positions', function () {
-    return view('positions');
-});
+// Index
+Route::get('/admin/employees','EmployeesController@index');
+// Create
+Route::get('/admin/employees/create','EmployeesController@create');
+// Show
+Route::get('/admin/employees/{employee}', 'EmployeesController@show');
+// Store
+Route::post('/admin/employees','EmployeesController@store');
+// Edit
+Route::get('/admin/employees/{employee}/edit','EmployeesController@edit');
+// Update
+Route::put('/admin/employees/{employee}','EmployeesController@update');
+// Delete
+Route::delete('/admin/employees/{employee}','EmployeesController@delete');
 
-Route::get('/admin/leaves-categories', function () {
-    return view('leaves-categories');
-});
+////////// POSITIONS
 
-// Read of Annual Leaves
-Route::get('/admin/leaves-annual', 'AnnualLeavesController@index');
+// Index
+Route::get('/admin/positions','PositionsController@index');
+// Create
+Route::get('/admin/positions/create','PositionsController@create');
+// Show
+Route::get('/admin/positions/{position}', 'PositionsController@show');
+// Store
+Route::post('/admin/positions','PositionsController@store');
+// Edit
+Route::get('/admin/positions/{position}/edit','PositionsController@edit');
+// Update
+Route::put('/admin/positions/{position}','PositionsController@update');
+// Delete
+Route::delete('/admin/positions/{position}','PositionsController@delete');
 
-// Store or Update of Annual Leaves
-Route::put('/admin/leaves-annual/storeOrUpdate', 'AnnualLeavesController@storeOrUpdate');
+////////// LEAVE CATEGORIES
 
-Route::get('/admin/leaves-applications', function () {
-    return view('leaves-applications');
-});
+// Index
+Route::get('/admin/leave_categories','LeaveCategoriesController@index');
+// Create
+Route::get('/admin/leave_categories/create','LeaveCategoriesController@create');
+// Show
+Route::get('/admin/leave_categories/{leave_category}', 'LeaveCategoriesController@show');
+// Store
+Route::post('/admin/leave_categories','LeaveCategoriesController@store');
+// Edit
+Route::get('/admin/leave_categories/{leave_category}/edit','LeaveCategoriesController@edit');
+// Update
+Route::put('/admin/leave_categories/{leave_category}','LeaveCategoriesController@update');
+// Delete
+Route::delete('/admin/leave_categories/{leave_category}','LeaveCategoriesController@delete');
 
+/////////// ANNUAL LEAVES
 
+// Read
+Route::get('/admin/leave_annual', 'AnnualLeavesController@index');
+// Store or Update
+Route::put('/admin/leave_annual/storeOrUpdate', 'AnnualLeavesController@storeOrUpdate');
 
-//CRUD for deductibles
+////////// LEAVE APPLICATIONS
+
+// Index
+Route::get('/admin/leave_applications','LeaveApplicationsController@index');
+// Create
+Route::get('/admin/leave_applications/create','LeaveApplicationsController@create');
+// Show
+Route::get('/admin/leave_applications/{leave_application}', 'LeaveApplicationsController@show');
+// Store
+Route::post('/admin/leave_applications','LeaveApplicationsController@store');
+// Edit
+Route::get('/admin/leave_applications/{leave_application}/edit','LeaveApplicationsController@edit');
+// Update
+Route::put('/admin/leave_applications/{leave_application}','LeaveApplicationsController@update');
+// Delete
+Route::delete('/admin/leave_applications/{leave_application}','LeaveApplicationsController@delete');
+
+////////// DEDUCTIBLES
+
+// Index
 Route::get('/admin/deductibles', 'DeductiblesController@index');
-
-//create
+// Create
 Route::get('/admin/deductibles/create', 'DeductiblesController@create');
-
-//show
-Route::get('/admin/deductibles/{deductibles}', 'DeductiblesController@show');
-
-//store
-Route::get('/admin/deductibles', 'DeductiblesController@store');
-
-//edit
+// Show
+Route::get('/admin/deductibles/{deductible}', 'DeductiblesController@show');
+// Store
+Route::post('/admin/deductibles', 'DeductiblesController@store');
+// Edit
 Route::get('/admin/deductibles/{deductible}/edit', 'DeductiblesController@edit');
-
-//update
+// Update
 Route::put('/admin/deductibles/{deductible}', 'DeductiblesController@update');
-
-//delete
+// Delete
 Route::delete('/admin/deductibles/{deductible}', 'DeductiblesController@delete');
 
+////////// DEDUCTIBLE RECORDS
 
+// Read
+Route::get('/admin/deductible_records', 'DeductibleRecordsController@index');
+// Store
+Route::post('/admin/deductible_records/store', 'DeductibleRecordsController@store');
+// Edit 
+Route::get('/admin/deductible_records/{deductible_record}/edit', 'DeductibleRecordsController@edit'); 
+// Update
+Route::put('/admin/deductible_records/{deductible_record}', 'DeductibleRecordsController@update'); 
 
+////////// MONTHLY SALARIES OR PAYROLL
 
-// Read of Deductible Records
-Route::get('/admin/deductible-records', 'DeductibleRecordsController@index');
-
-// Store of Deductible Records
-Route::put('/admin/deductible-records/store', 'DeductibleRecordsController@store');
-
-// Edit of Deductible Records 
-Route::get('/admin/deductible-records/{date}/{employee}/{deductible}/edit', 'DeductibleRecordsController@edit'); 
-
-// Update of Deductible Records
-Route::put('/admin/deductible-records/{date}/{employee}/{deductible}', 'DeductibleRecordsController@update'); 
-
-// Read of Monthly Salaries
+// Read
 Route::get('/admin/payroll', 'MonthlySalariesController@index');
-
-// Show of Monthly Salaries
-Route::get('/admin/payroll/{date}/{employee}', 'MonthlySalariesController@show');
-
-// Store and Update of Monthly Salaries
+// Show
+Route::get('/admin/payroll/{monthly_salary}', 'MonthlySalariesController@show');
+// Store and Update
 Route::put('/admin/payroll/storeOrUpdate', 'MonthlySalariesController@storeOrUpdate');
-
-Route::get('/admin/login', function () {
-    return view('login-admin');
-});
-
-
-//CRUD for leave_application
-
-//index - read
-Route::get('/admin/leaves-applications', 'LeaveApplicationController@index');
-//Create
-//Route::get('admin/leaves-applications', 'LeaveApplicationController@create');
-//Store
-//Route::post('admin/leaves-applications', 'LeaveApplicationController@store');
-//Show
-//Route::get('admin/leaves-applications{$leaves', 'LeaveApplicationController');
-//Edit
-//Route::get
-//Update
-
-//Delete
-//Positions
-//Index
-Route::get('/admin/positions','PositionsController@index');
-
-//create
-Route::get('/admin/positions/create','PositionsController@create');
-
-//show
-Route::get('/admin/positions,{positions}', 'PositionsController@show');
-
-//store
-Route::post('/admin/positions','PositionsController@store');
-
-//edit
-Route::get('/admin/positions/{positions}/edit','PositionsController@edit');
-
-//update
-Route::put('/admin/positions/{positions}','PositionsController@update');
-
-//delete
-Route::delete('/admin/positions/{positions}','PositionsController@delete');

@@ -11,10 +11,13 @@ class HomeController extends Controller
 {
     public function index() {
     	$totalEmployees = Employee::get()->count();
-    	$totalDTRForCurrentMonth = DailyTimeRecord::where(['date' => date('Y-m-d')])->get()->count();
-    	$totalNumberOfEarlyForCurrentMonth = DailyTimeRecord::where(['date' => date('Y-m-d'), 'remarks' => 'Early'])->get()->count();
-    	$punctuality = round(($totalNumberOfEarlyForCurrentMonth / $totalDTRForCurrentMonth) * 100, 0);
-    	$daysBeforePayday = 0;
+    	$totalDTRForCurrentMonth = DailyTimeRecord::whereBetween('date', [date('Y-m'.'-01'), date('Y-m'.'-31')])->get()->count();
+    	$totalNumberOfEarlyForCurrentMonth = DailyTimeRecord::whereBetween('date', [date('Y-m'.'-01'), date('Y-m'.'-31')])->where(['remarks' => 'Early'])->get()->count();
+        if($totalDTRForCurrentMonth == 0) {
+            $punctuality = 0;
+        } else {
+            $punctuality = round(($totalNumberOfEarlyForCurrentMonth / $totalDTRForCurrentMonth) * 100, 0);
+        }
     	if(date('d') > 0 && date('d') <= 15) {
     		$daysBeforePayday = 15-date('d');
     	} else {

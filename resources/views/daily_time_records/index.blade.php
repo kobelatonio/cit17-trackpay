@@ -11,11 +11,10 @@ TrackPay - Daily Time Record
 @section('filters')
 <div class="filters">
 	<h1 class="filters-title">SEARCH FILTER</h1>
-	<form class="filters-box" action="/admin/dtr/store" method="POST">
-		@method('PUT')
+	<form class="filters-box" action="/admin/daily_time_records/store" method="POST">
 		@csrf
 		<label for="date">Date</label>
-		<input type="date" id="date" name="date">
+		<input type="date" id="date" name="date" max="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}">
 		<input type="submit" value="Submit">
 	</form>
 </div>

@@ -9,11 +9,11 @@ TrackPay - Annual Leaves
 @endsection
 
 @section('search-filters')
-SEARCH FILTERS
+SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/leaves-annual/storeOrUpdate">
+<form class="filters-box" method="POST" action="/admin/leave_annual/storeOrUpdate">
 	@method('PUT')
 	@csrf
 	<label for="leave">Leave Category</label>

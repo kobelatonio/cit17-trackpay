@@ -5,7 +5,7 @@ TrackPay - Admin Home
 @endsection
 
 @section('page')
-<span class="gray">Welcome back,</span> admin!
+<span class="gray">Welcome,</span> admin!
 @endsection
 
 @section('table')
@@ -24,18 +24,20 @@ TrackPay - Admin Home
 			<h2>{{ $daysBeforePayday }}</h2>
 		</div>
 	</div>
+	@if($employeesWithBirthday) 
 	<div class="birthdays">
 		<table class="birthday">
-		<tr>
-			<th colspan="2">Employees with birthday in current month</th>
-		</tr>
-		@foreach($employeesWithBirthday as $employee)
-		<tr>
-			<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
-			<td>{{ date('F d, Y', strtotime($employee->birthdate)) }}</td>
-		</tr>
-		@endforeach
-	</table>
+			<tr>
+				<th colspan="2">Employees with birthday in current month</th>
+			</tr>
+			@foreach($employeesWithBirthday as $employee)
+			<tr>
+				<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+				<td>{{ date('F d, Y', strtotime($employee->birthdate)) }}</td>
+			</tr>
+			@endforeach
+		</table>
 	</div>
+	@endif
 </div>
 @endsection

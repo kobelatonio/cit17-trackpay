@@ -11,11 +11,11 @@ TrackPay - Daily Time Record
 @section('filters')
 <div class="filters">
 	<h1 class="filters-title">SEARCH FILTER</h1>
-	<form class="filters-box" action="/admin/dtr/store" method="POST">
+	<form class="filters-box" action="/admin/daily_time_records/store" method="POST">
 		@method('PUT')
 		@csrf
 		<label for="date">Date</label>
-		<input type="date" id="date" name="date" value="{{ $dtrFiltered->first()->date }}">
+		<input type="date" id="date" name="date" value="{{ $dtrFiltered->first()->date }}" max="{{ date('Y-m-d') }}">
 		<input type="submit" value="Submit">
 	</form>
 </div>
@@ -74,7 +74,7 @@ TrackPay - Daily Time Record
 						@if(is_null($dtr->hours_worked))
 						-
 						@else
-						{{ $dtr->hours_worked }}
+						{{ $dtr->hours_worked }} hour/s
 						@endif
 					</td>
 				</tr>

@@ -16,7 +16,7 @@ class CreateDailyTimeRecordsTable extends Migration
         Schema::create('daily_time_records', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
             $table->time('shift_start');
             $table->time('shift_end');
             $table->time('time_in')->nullable();
@@ -35,6 +35,8 @@ class CreateDailyTimeRecordsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('daily_time_records');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

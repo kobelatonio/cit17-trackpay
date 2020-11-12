@@ -9,22 +9,15 @@ TrackPay - Employee Time In/Out
 	<form class="login-form" method="POST" action="/time-entry/storeOrUpdate">
 		@method('PUT')
 		@csrf
-		<h1>Time In</h1>
+		<h1>Time In/Out</h1>
+		<select name="entry" style="width: 100%;">
+			<option value="in" selected>Time In</option>
+			<option value="out">Time Out</option>
+		</select>
 		<input type="text" id="username" name="username" placeholder="Input username">
 		<input type="password" id="password" name="password" placeholder="Input password">
 		<div class="buttons">
-			<input type="submit" value="Time In">
-		</div>
-	</form>
-
-	<form class="login-form" method="POST" action="/time-entry/update">
-		@method('PUT')
-		@csrf
-		<h1>Time Out</h1>
-		<input type="text" id="username" name="username" placeholder="Input username">
-		<input type="password" id="password" name="password" placeholder="Input password">
-		<div class="buttons">
-			<input type="submit" value="Time Out">
+			<input type="submit" value="Submit">
 		</div>
 	</form>
 </div>

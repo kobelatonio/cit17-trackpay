@@ -5,29 +5,16 @@ TrackPay - Deductibles
 @endsection
 
 @section('page')
-Deductibles
+<span class="gray">Create - </span>Deductible
 @endsection
 
-@section('addbtn')
-<div class="container">
-	<h5>Add a Deductible</h5>
-	<form method="POST" action="/admin/deductibles">
-		@csrf
-		<div class="form-group">
-			<label for="exampleInputEmail">Type</label>
-			<select class="custome-select" name="type">
-				@foreach($types as $type)
-				<option value="{{$type}}">{{$type}}</option>
-				@endforeach
-			</select>
-		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail">Percentage</label>
-			<input type="text" class="form-control" id="exampleInputEmail" name="percentage">
-		</div>
-		<button class="add">Add a deductible</button>
-	</form>
-</div>
-
+@section('content')
+<form method="POST" action="/admin/deductibles/" class="edit-form"> 
+	@csrf 
+	<label for="type">Deductible Type :</label>
+	<input type="text" name="type" placeholder="Enter type" autofocus><br>
+	<label for="percentage">Percentage :</label>
+	<input type="number" name="percentage" step="0.01" placeholder="Enter percentage"><br>
+	<input type="submit" value="Submit">
+</form>
 @endsection
-

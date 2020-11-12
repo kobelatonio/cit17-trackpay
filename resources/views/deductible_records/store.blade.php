@@ -13,13 +13,12 @@ SEARCH FILTERS
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/deductible-records/store">
-	@method('PUT')
+<form class="filters-box" method="POST" action="/admin/deductible_records/store">
 	@csrf
 	<label for="deductible">Deductible</label>
 	<select name="type" id="type">
 		@foreach($deductibles as $deductible)
-			@if($deductibleRecords->first()->deductible_id == $deductible->id)
+			@if($deductible_records->first()->deductible_id == $deductible->id)
 			<option value="{{ $deductible->type }}" selected>{{ $deductible->type }}</option>
 			@else
 			<option value="{{ $deductible->type }}">{{ $deductible->type }}</option>
@@ -27,7 +26,7 @@ SEARCH FILTERS
 		@endforeach
 	</select>
 	<label for="date">Month & Year</label>
-	<input type="month" id="date" name="date" value="{{ substr($deductibleRecords->first()->date, 0, 7) }}">
+	<input type="month" id="date" name="date" value="{{ substr($deductible_records->first()->date, 0, 7) }}" max="{{ date('Y-m') }}">
 	<input type="submit" value="Submit">
 </form>
 @endsection
@@ -44,19 +43,24 @@ SEARCH FILTERS
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($deductibleRecords as $deductibleRecord)
+			@foreach($deductible_records as $deductible_record)
 				<tr>
-					<td>{{ $deductibleRecord->first_name }} {{ $deductibleRecord->last_name }}</td>
 					<td>
-					@if($deductibleRecord->is_deducted) 
+						@foreach($employees as $employee)
+						@if($employee->id == $deductible_record->employee_id)
+						{{ $employee->first_name }} {{ $employee->last_name }}
+						@endif
+						@endforeach
+					</td>
+					<td>
+					@if($deductible_record->is_deducted) 
 					Deducted
 					@else
 					Not Deducted
 					@endif
 					</td>
-					<td>Php {{ $deductibleRecord->deduction_amount }}</td>
-					<!-- (DeductibleRecords table has no primary key but considers these three parameters as its composite primary keys) -->
-					<td><a class="edit" href="/admin/deductible-records/{{ $deductibleRecord->date }}/{{ $deductibleRecord->employee_id }}/{{ $deductibleRecord->deductible_id }}/edit">Edit</a></td>
+					<td>Php {{ $deductible_record->deduction_amount }}</td>
+					<td><a class="edit" href="/admin/deductible_records/{{ $deductible_record->id }}/edit">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>
