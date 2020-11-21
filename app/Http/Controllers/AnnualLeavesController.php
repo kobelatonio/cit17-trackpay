@@ -59,7 +59,7 @@ class AnnualLeavesController extends Controller
 			$annualLeavesOfEmployees = AnnualLeave::where(['leave_category_id' => LeaveCategory::where(['name' => request()->name])->first()->id])->join('employees', 'employees.id', '=', 'annual_leaves.employee_id')->get();
 			return view('leave_annual.storeOrUpdate', compact('annualLeavesOfEmployees', 'leaveCategories'));
 	    } else {
-			return redirect('/admin/leave_annual')->with('alert', "Create an employee or leave category first!");
+			return redirect('/leave_annual')->with('alert', "Create an employee or leave category first!");
 		}
     }
 }

@@ -32,6 +32,6 @@ TrackPay - Leave Applications
 	<label for="reason_for_rejection">Reason for Rejection :</label>
 	<input type="text" name="reason_for_rejection" value="{{ $leave_application->reason_for_rejection }}" readonly><br>
 	@endif
-	<a class="edit" href="/admin/leave_applications">Back</a>
+	<a class="edit" href="/leave_applications">Back</a>
 </form>
 @endsection

@@ -9,7 +9,7 @@ Job Positions
 @endsection
 
 @section('addbtn')
-<a class="add" href="/admin/positions/create">Add a job position</a>
+<a class="add" href="/positions/create">Add a job position</a>
 @endsection
 
 @section('table')
@@ -33,9 +33,9 @@ Job Positions
 				<td>{{ $position->shift_start}}</td>
 				<td>{{ $position->shift_end}}</td>
 				<td class="settings"> 
-					<a class="edit" href="/admin/positions/{{ $position->id }}/edit">Edit</a>
-					<a class="show" href="/admin/positions/{{ $position->id }}">Show</a>
-					<form method='POST' action='/admin/positions/{{ $position->id }}'>
+					<a class="edit" href="/positions/{{ $position->id }}/edit">Edit</a>
+					<a class="show" href="/positions/{{ $position->id }}">Show</a>
+					<form method='POST' action='/positions/{{ $position->id }}'>
 						@method('DELETE')
 						@csrf
 						<input type="submit" class="delete" value="Delete">

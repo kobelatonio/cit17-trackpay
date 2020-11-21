@@ -9,7 +9,7 @@ TrackPay - Deductible Records
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/deductible_records/{{ $deductible_record->id }}">
+<form class="filters-box" method="POST" action="/deductible_records/{{ $deductible_record->id }}">
 	@method('PUT')
 	@csrf
 	<label for="date">Date : </label>

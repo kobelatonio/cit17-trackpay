@@ -44,7 +44,7 @@ class DeductibleRecordsController extends Controller
             $deductibles = Deductible::get();
     		return view('deductible_records.store', compact('deductible_records', 'employees', 'deductibles'));
         } else {
-            return redirect('/admin/deductible_records')->with('alert', "Create an employee or deductible first!");
+            return redirect('/deductible_records')->with('alert', "Create an employee or deductible first!");
         }
     }
 

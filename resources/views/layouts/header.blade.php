@@ -22,8 +22,8 @@
 		C29.9,25.4,25.4,21.6,20,21.6z"/>
 	</g>
 </svg>
-<h3 class="admin-text">admin</h3>
-<a class="time-entry" href="{{ url('/time-entry') }}" target="_blank">Time In/Out</a>
-<a class="logout">Log Out</a>
+<h3 class="admin-text">{{auth()->user()->first_name}}</h3>
+<!-- <a class="time-entry" href="{{ url('/time-entry') }}" target="_blank">Time In/Out</a> -->
+<a class="logout" href="/logout">Log Out</a>
 </div>
 </div>

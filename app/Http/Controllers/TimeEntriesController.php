@@ -16,7 +16,7 @@ class TimeEntriesController extends Controller
     }
 
     public function storeOrUpdate() {
-        $credentials = Employee::where(['username' => request()->username, 'password' => request()->password])->first();
+        $credentials = Employee::where(['email_address' => request()->email_address, 'password' => request()->password])->first();
         request()['date'] = date("Y-m-d"); // store current date in the request
         request()['time'] = date("H:i:s"); // store current time in the request
         if($credentials) { // Check if the username and password pair is correct
@@ -73,7 +73,7 @@ class TimeEntriesController extends Controller
             }
             return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name.$message_extension);
         } else {
-            return redirect('/time-entry')->with('alert', "Incorrect username or password");
+            return redirect('/time-entry')->with('alert', "Incorrect email or password");
         }
     }
 

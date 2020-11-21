@@ -5,7 +5,7 @@ TrackPay - Admin Home
 @endsection
 
 @section('page')
-<span class="gray">Welcome,</span> admin!
+<span class="gray">Welcome,</span> {{ auth()->user()->first_name }}!
 @endsection
 
 @section('table')

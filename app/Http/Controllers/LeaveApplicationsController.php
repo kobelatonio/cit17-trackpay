@@ -24,7 +24,7 @@ class LeaveApplicationsController extends Controller
     	if(!$leave_categories->isEmpty() && !$employees->isEmpty()) {
     		return view('leave_applications.create', compact('employees', 'leave_categories'));
     	} else {
-    		return redirect('/admin/leave_applications')->with('alert', "Create an employee or leave category first!");
+    		return redirect('/leave_applications')->with('alert', "Create an employee or leave category first!");
     	}
     }
 
@@ -45,7 +45,7 @@ class LeaveApplicationsController extends Controller
     	$leave_application->status = request()->status;
     	$leave_application->reason_for_rejection = request()->reason_for_rejection;
     	$leave_application->save();
-    	return redirect('/admin/leave_applications');
+    	return redirect('/leave_applications');
     }
 
     public function edit(LeaveApplication $leave_application)
@@ -64,12 +64,12 @@ class LeaveApplicationsController extends Controller
         $leave_application->status = request()->status;
         $leave_application->reason_for_rejection = request()->reason_for_rejection;
         $leave_application->save();
-    	return redirect('/admin/leave_applications');
+    	return redirect('/leave_applications');
     }
 
     public function delete(LeaveApplication $leave_application)
     {
     	$leave_application->delete();
-    	return redirect('/admin/leave_applications');
+    	return redirect('/leave_applications');
     }
 }

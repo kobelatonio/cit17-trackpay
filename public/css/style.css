@@ -5,6 +5,8 @@
 	border: 0;
 	box-sizing: border-box;
 	color: #0F5EF7;
+	transition: all .4s ease;
+	-webkit-transition: all .4s ease-in-out;
 }
 
 body {
@@ -52,6 +54,7 @@ a.logout {
 	margin-left: 15px;
 	font-size: 13px;
 	background: #E2E3E8;
+	text-decoration: none;
 }
 
 a.time-entry {
@@ -362,12 +365,12 @@ button.delete, input.delete {
 }
 
 .login {
-	height: 100vh;
 	width: 100%;
 	background: #F4F7FF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 50px;
 }
 
 .login-logo {
@@ -383,7 +386,7 @@ button.delete, input.delete {
 	background: #0F5EF7;
 	padding: 18px 30px 30px ;
 	border-radius: 10px;
-	text-align: center;
+	text-align: left;
 	margin-top: 10px;
 }
 
@@ -391,19 +394,13 @@ button.delete, input.delete {
 	color: white;
 	font-size: 24px;
 	margin-bottom: 15px;
+	text-align: center;
 }
 
-.login-form input[type=text], .login-form input[type=password] {
-	margin: 0px;
+.login-form input, .login-form select {
 	display: block;
-	margin-top: 15px;
+	margin: 15px 0 0;
 	width: 250px;
-}
-
-.login-form .buttons {
-	display: flex;
-  	flex-wrap: wrap;
-  	gap: 15px;
 }
 
 .login-form input[type=submit] {
@@ -417,4 +414,60 @@ button.delete, input.delete {
 
 .alert {
 	margin-top: 20px;
+}
+
+.back {
+	background: #0F5EF7;
+	display:block;
+	margin-top: 30px;
+	border-radius: 25px;
+	padding: 10px 20px;
+}
+
+.back a {
+	color: #fff;
+	font-size: 13px;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+div.home {
+	background: #E9EFFE;
+	padding: 30px;
+	border-radius: 10px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.home a {
+	padding: 10px 35px;
+	border-radius: 50px;
+	font-weight: 500;
+	text-decoration: none;
+	display: block;
+	font-size: 20px;
+	background: #0F5EF7;
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+.home a:last-child {
+	margin-bottom: 0px;
+}
+
+.home a:hover {
+	background: #FFB800;
+}
+
+.errors {
+	background: #E9EFFE;	
+	padding: 10px 35px;
+	border-radius: 50px;
+	margin-top: 30px;
+}
+
+.errors h1 {
+	display: block;
+	font-size: 16px;
+	font-weight: 400;
 }

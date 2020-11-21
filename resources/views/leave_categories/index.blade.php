@@ -9,7 +9,7 @@ Leave Categories
 @endsection
 
 @section('addbtn')
-<a class="add" href="/admin/leave_categories/create">Add a leave category</a>
+<a class="add" href="/leave_categories/create">Add a leave category</a>
 @endsection
 
 @section('table')
@@ -29,9 +29,9 @@ Leave Categories
 				<td>{{ $leave_category->name}}</td>
 				<td>{{ $leave_category->annual_leave_days}} day/s</td>
 				<td class="settings"> 
-					<a class="edit" href="/admin/leave_categories/{{ $leave_category->id }}/edit">Edit</a>
-					<a class="show" href="/admin/leave_categories/{{ $leave_category->id }}">Show</a>
-					<form method='POST' action='/admin/leave_categories/{{ $leave_category->id }}'>
+					<a class="edit" href="/leave_categories/{{ $leave_category->id }}/edit">Edit</a>
+					<a class="show" href="/leave_categories/{{ $leave_category->id }}">Show</a>
+					<form method='POST' action='/leave_categories/{{ $leave_category->id }}'>
 						@method('DELETE')
 						@csrf
 						<input type="submit" class="delete" value="Delete">

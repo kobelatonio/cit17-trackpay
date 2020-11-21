@@ -9,7 +9,7 @@ TrackPay - Deductibles
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/deductibles/{{ $deductible->id }}" class="edit-form"> 
+<form method="POST" action="/deductibles/{{ $deductible->id }}" class="edit-form"> 
 	@method('PUT')
 	@csrf 
 	<label for="type">Deductible Type :</label>

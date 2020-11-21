@@ -14,6 +14,6 @@ TrackPay - Leave Categories
 	<input type="text" name="name" value="{{ $leave_category->name }}" readonly><br>
 	<label for="annual_leave_days">Annual Leave Days :</label>
 	<input type="text" name="annual_leave_days" value="{{ $leave_category->annual_leave_days }}" readonly><br>
-	<a class="edit" href="/admin/leave_categories">Back</a>
+	<a class="edit" href="/leave_categories">Back</a>
 </form>
 @endsection

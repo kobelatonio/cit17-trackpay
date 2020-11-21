@@ -13,7 +13,7 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/payroll/storeOrUpdate">
+<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
 	@method('PUT')
 	@csrf
 	<label for="date">Month & Year</label>

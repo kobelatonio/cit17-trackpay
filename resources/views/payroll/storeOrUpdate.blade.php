@@ -13,7 +13,7 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/payroll/storeOrUpdate">
+<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
 	@method('PUT')
 	@csrf
 	<label for="date">Month & Year</label>
@@ -54,7 +54,7 @@ SEARCH FILTER
 				<td>Php {{ number_format($monthly_salary->second_cutoff_pay, 2, '.', ',') }}</td>
 				<td>Php {{ number_format($monthly_salary->net_pay, 2, '.', ',') }}</td>
 				<td>
-					<a class="edit" href="/admin/payroll/{{ $monthly_salary->id }}">Show</a>
+					<a class="edit" href="/payroll/{{ $monthly_salary->id }}">Show</a>
 				</td>
 			</tr>
 			@endforeach

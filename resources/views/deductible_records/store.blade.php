@@ -13,7 +13,7 @@ SEARCH FILTERS
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/deductible_records/store">
+<form class="filters-box" method="POST" action="/deductible_records/store">
 	@csrf
 	<label for="deductible">Deductible</label>
 	<select name="type" id="type">

@@ -9,7 +9,7 @@ TrackPay - Leave Applications
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/leave_applications/" class="edit-form"> 
+<form method="POST" action="/leave_applications/" class="edit-form"> 
 	@csrf 
 	<label for="employee_id">Employee :</label>
 	<select name="employee_id" autofocus>

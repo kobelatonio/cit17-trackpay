@@ -31,7 +31,7 @@ class PositionsController extends Controller
         $position->shift_start = request()->shift_start;
         $position->shift_end = request()->shift_end;
         $position->save();
-        return redirect('/admin/positions');
+        return redirect('/positions');
     }
 
     public function edit(Position $position)
@@ -46,12 +46,12 @@ class PositionsController extends Controller
         $position->shift_start = request()->shift_start;
         $position->shift_end = request()->shift_end;
         $position->save();
-        return redirect('/admin/positions');
+        return redirect('/positions');
     }
 
     public function delete(Position $position)
     {
         $position->delete();
-        return redirect('/admin/positions');
+        return redirect('/positions');
     }
 }

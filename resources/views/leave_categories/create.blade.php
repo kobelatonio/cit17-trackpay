@@ -9,7 +9,7 @@ TrackPay - Leave Categories
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/leave_categories/" class="edit-form"> 
+<form method="POST" action="/leave_categories/" class="edit-form"> 
 	@csrf 
 	<label for="name">Category Name :</label>
 	<input type="text" name="name" placeholder="Enter category name" autofocus><br>

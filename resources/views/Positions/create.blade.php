@@ -9,7 +9,7 @@ TrackPay - Positions
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/positions/" class="edit-form"> 
+<form method="POST" action="/positions/" class="edit-form"> 
 	@csrf 
 	<label for="title">Job Title :</label>
 	<input type="text" name="title" placeholder="Enter title" autofocus><br>

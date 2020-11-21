@@ -28,6 +28,6 @@ TrackPay - Employees
 		<input type="text" name="gender" value="{{ $position->title }}" readonly><br>
 		@endif
 	@endforeach
-	<a class="edit" href="/admin/employees">Back</a>
+	<a class="edit" href="/employees">Back</a>
 </form>
 @endsection

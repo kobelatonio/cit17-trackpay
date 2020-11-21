@@ -29,7 +29,7 @@ class DeductiblesController extends Controller
 		$deductible->type = request()->type;
 		$deductible->percentage = request()->percentage;
 		$deductible->save();
-		return redirect('/admin/deductibles');
+		return redirect('/deductibles');
 	}
 
 	public function edit(Deductible $deductible)
@@ -42,12 +42,12 @@ class DeductiblesController extends Controller
 		$deductible->type = request()->type;
 		$deductible->percentage = request()->percentage;
 		$deductible->save();
-		return redirect('/admin/deductibles');
+		return redirect('/deductibles');
 	}
 
 	public function delete(Deductible $deductible)
 	{
 		$deductible->delete();
-		return redirect('/admin/deductibles');
+		return redirect('/deductibles');
 	}
 }

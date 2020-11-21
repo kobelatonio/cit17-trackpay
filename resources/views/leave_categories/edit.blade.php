@@ -9,7 +9,7 @@ TrackPay - Leave Categories
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/leave_categories/{{ $leave_category->id }}" class="edit-form"> 
+<form method="POST" action="/leave_categories/{{ $leave_category->id }}" class="edit-form"> 
 	@method('PUT')
 	@csrf 
 	<label for="name">Category Name :</label>

@@ -9,7 +9,7 @@ TrackPay - Employees
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/employees/{{ $employee->id }}" class="edit-form"> 
+<form method="POST" action="/employees/{{ $employee->id }}" class="edit-form"> 
 	@method('PUT')
 	@csrf 
 	<label for="first_name">First Name :</label>

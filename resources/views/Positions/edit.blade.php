@@ -9,7 +9,7 @@ TrackPay - Job Positions
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/positions/{{ $position->id }}" class="edit-form"> 
+<form method="POST" action="/positions/{{ $position->id }}" class="edit-form"> 
 	@method('PUT')
 	@csrf 
 	<label for="title">Job Title :</label>

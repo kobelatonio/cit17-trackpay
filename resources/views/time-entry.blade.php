@@ -14,12 +14,14 @@ TrackPay - Employee Time In/Out
 			<option value="in" selected>Time In</option>
 			<option value="out">Time Out</option>
 		</select>
-		<input type="text" id="username" name="username" placeholder="Input username">
+		<input type="email" id="email_address" name="email_address" placeholder="Input email address">
 		<input type="password" id="password" name="password" placeholder="Input password">
 		<div class="buttons">
 			<input type="submit" value="Submit">
 		</div>
 	</form>
 </div>
-
+<div class="back">
+  <a href="/">HOME</a>
+</div>
 @endsection

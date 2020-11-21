@@ -1,5 +1,5 @@
 <div class="sidebar">
-	<a class="button-link" href="{{ url('/admin/home') }}"><div class="button {{ Request::is('admin/home') ? 'active' : '' }}">
+	<a class="button-link" href="{{ url('/dashboard') }}"><div class="button {{ Request::is('dashboard') ? 'active' : '' }}">
 		<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 		<g>
@@ -17,10 +17,10 @@
 			</g>
 		</g>
 	</svg>
-	<h1>Homepage</h1>
+	<h1>Dashboard</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/daily_time_records') }}"><div class="button {{ Request::is('admin/daily_time_records*') ? 'active' : '' }}">
+<a class="button-link" href="{{ url('/daily_time_records') }}"><div class="button {{ Request::is('daily_time_records*') ? 'active' : '' }}">
 	<svg class="svg" version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -36,7 +36,7 @@
 <h1>DTR</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/employees') }}"><div class="button {{ Request::is('admin/employees*') ? 'active' : '' }}">
+<a class="button-link" href="{{ url('/employees') }}"><div class="button {{ Request::is('employees*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -57,7 +57,7 @@
 <h1>Employees</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/positions') }}"><div class="button {{ Request::is('admin/positions*') ? 'active' : '' }}">
+<a class="button-link" href="{{ url('/positions') }}"><div class="button {{ Request::is('positions*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<path class="svg" fill="#0F5EF7" d="M16.9,4.3h-2.8c-0.2-2.1-1.9-3.8-4.1-3.8h0c-2.2,0-3.9,1.7-4.1,3.8H3.1C1.4,4.3,0,5.6,0,7.3v9.2
@@ -69,7 +69,7 @@
 <h1>Job Positions</h1>
 </div></a>
 
-<a class="button-link" onclick="onClick()" style="cursor: pointer;"><div class="button {{ Request::is('admin/leave*') ? 'active' : '' }}">
+<a class="button-link" onclick="onClick()" style="cursor: pointer;"><div class="button {{ Request::is('leave*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -82,19 +82,19 @@
 <h1>Leaves</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leave_categories') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/leave_categories') }}"><div class="button hidden">
 	<h1>Leave Categories</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leave_annual') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/leave_annual') }}"><div class="button hidden">
 	<h1>Annual Leaves</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/leave_applications') }}"><div class="button hidden">
+<a class="button-link" href="{{ url('/leave_applications') }}"><div class="button hidden">
 	<h1>Leave Applications</h1>
 </div></a>
 
-<a class="button-link" onclick="onClick2()" style="cursor: pointer;"><div class="button {{ Request::is('admin/deductible*') ? 'active' : '' }}">
+<a class="button-link" onclick="onClick2()" style="cursor: pointer;"><div class="button {{ Request::is('deductible*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>
@@ -111,15 +111,15 @@
 <h1>Deductions</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/deductibles') }}"><div class="button hidden2">
+<a class="button-link" href="{{ url('/deductibles') }}"><div class="button hidden2">
 	<h1>Deductibles</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/deductible_records') }}"><div class="button hidden2">
+<a class="button-link" href="{{ url('/deductible_records') }}"><div class="button hidden2">
 	<h1>Deductible Records</h1>
 </div></a>
 
-<a class="button-link" href="{{ url('/admin/payroll') }}"><div class="button {{ Request::is('admin/payroll*') ? 'active' : '' }}">
+<a class="button-link" href="{{ url('/payroll') }}"><div class="button {{ Request::is('payroll*') ? 'active' : '' }}">
 	<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 	<g>

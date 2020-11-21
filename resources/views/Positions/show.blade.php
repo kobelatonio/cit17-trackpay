@@ -18,6 +18,6 @@ TrackPay - Job Positions
 	<input type="text" name="shift_start" value="{{ $position->shift_start }}" readonly><br>
 	<label for="shift_end">Shift End :</label>
 	<input type="text" name="shift_end" value="{{ $position->shift_end }}" readonly><br>
-	<a class="edit" href="/admin/positions">Back</a>
+	<a class="edit" href="/positions">Back</a>
 </form>
 @endsection

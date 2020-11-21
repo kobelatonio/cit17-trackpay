@@ -14,6 +14,6 @@ TrackPay - Deductibles
 	<input type="text" name="type" value="{{ $deductible->type }}" readonly><br>
 	<label for="percentage">Percentage :</label>
 	<input type="text" name="percentage" value="{{ $deductible->percentage}}%" readonly><br>
-	<a class="edit" href="/admin/deductibles">Back</a>
+	<a class="edit" href="/deductibles">Back</a>
 </form>
 @endsection

@@ -29,7 +29,7 @@ class LeaveCategoriesController extends Controller
         $leave_category->name = request()->name;
         $leave_category->annual_leave_days = request()->annual_leave_days;
         $leave_category->save();
-        return redirect('/admin/leave_categories');
+        return redirect('/leave_categories');
     }
 
     public function edit(LeaveCategory $leave_category)
@@ -42,12 +42,12 @@ class LeaveCategoriesController extends Controller
         $leave_category->name = request()->name;
         $leave_category->annual_leave_days = request()->annual_leave_days;
         $leave_category->save();
-        return redirect('/admin/leave_categories');
+        return redirect('/leave_categories');
     }
 
     public function delete(LeaveCategory $leave_category)
     {
         $leave_category->delete();
-        return redirect('/admin/leave_categories');
+        return redirect('/leave_categories');
     }
 }

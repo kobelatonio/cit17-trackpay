@@ -60,7 +60,7 @@ class MonthlySalariesController extends Controller
     		$monthly_salaries = MonthlySalary::where(['date' => request()->date."-01"])->get();
     		return view('payroll.storeOrUpdate', compact('monthly_salaries', 'employees'));
         } else {
-            return redirect('/admin/payroll')->with('alert', "Create an employee first!");
+            return redirect('/payroll')->with('alert', "Create an employee first!");
         }
     }
 

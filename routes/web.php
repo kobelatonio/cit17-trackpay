@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+////////// HOMEPAGE
+
+Route::get('/', 'HomeController@index');
+
+////////// ADMIN LOGIN
+
+// Index
+Route::get('/login', 'AuthController@index')->name('login');
+// Login 
+Route::post('/login', 'AuthController@login');
+
 ////////// EMPLOYEE TIME IN/OUT
 
 // Index 
@@ -22,131 +33,140 @@ Route::put('/time-entry/storeOrUpdate', 'TimeEntriesController@storeOrUpdate');
 // Update
 Route::put('/time-entry/update', 'TimeEntriesController@update');
 
-////////// ADMIN LOGIN
+////////// EMPLOYEE REGISTER
 
-// Index
-Route::get('/admin/login', 'AdminLoginController@index');
+// Register 
+Route::get('/register', 'AuthController@register');
+// Store 
+Route::post('/register', 'AuthController@store');
 
-////////// ADMIN HOMEPAGE
+Route::middleware('auth')->group(function() { 
+	////////// ADMIN LOGOUT
 
-// Index
-Route::get('/admin/home', 'HomeController@index');
+	// Logout
+	Route::get('/logout', 'AuthController@logout');
 
-////////// DAILY TIME RECORDS
+	////////// DASHBOARD
 
-// Index
-Route::get('/admin/daily_time_records', 'DailyTimeRecordsController@index');
-// Store
-Route::post('/admin/daily_time_records/store', 'DailyTimeRecordsController@store');
+	// Index
+	Route::get('/dashboard', 'DashboardController@index');
 
-////////// EMPLOYEES
+	////////// DAILY TIME RECORDS
 
-// Index
-Route::get('/admin/employees','EmployeesController@index');
-// Create
-Route::get('/admin/employees/create','EmployeesController@create');
-// Show
-Route::get('/admin/employees/{employee}', 'EmployeesController@show');
-// Store
-Route::post('/admin/employees','EmployeesController@store');
-// Edit
-Route::get('/admin/employees/{employee}/edit','EmployeesController@edit');
-// Update
-Route::put('/admin/employees/{employee}','EmployeesController@update');
-// Delete
-Route::delete('/admin/employees/{employee}','EmployeesController@delete');
+	// Index
+	Route::get('/daily_time_records', 'DailyTimeRecordsController@index');
+	// Store
+	Route::post('/daily_time_records/store', 'DailyTimeRecordsController@store');
 
-////////// POSITIONS
+	////////// EMPLOYEES
 
-// Index
-Route::get('/admin/positions','PositionsController@index');
-// Create
-Route::get('/admin/positions/create','PositionsController@create');
-// Show
-Route::get('/admin/positions/{position}', 'PositionsController@show');
-// Store
-Route::post('/admin/positions','PositionsController@store');
-// Edit
-Route::get('/admin/positions/{position}/edit','PositionsController@edit');
-// Update
-Route::put('/admin/positions/{position}','PositionsController@update');
-// Delete
-Route::delete('/admin/positions/{position}','PositionsController@delete');
+	// Index
+	Route::get('/employees','EmployeesController@index');
+	// Create
+	Route::get('/employees/create','EmployeesController@create');
+	// Show
+	Route::get('/employees/{employee}', 'EmployeesController@show');
+	// Store
+	Route::post('/employees','EmployeesController@store');
+	// Edit
+	Route::get('/employees/{employee}/edit','EmployeesController@edit');
+	// Update
+	Route::put('/employees/{employee}','EmployeesController@update');
+	// Delete
+	Route::delete('/employees/{employee}','EmployeesController@delete');
 
-////////// LEAVE CATEGORIES
+	////////// POSITIONS
 
-// Index
-Route::get('/admin/leave_categories','LeaveCategoriesController@index');
-// Create
-Route::get('/admin/leave_categories/create','LeaveCategoriesController@create');
-// Show
-Route::get('/admin/leave_categories/{leave_category}', 'LeaveCategoriesController@show');
-// Store
-Route::post('/admin/leave_categories','LeaveCategoriesController@store');
-// Edit
-Route::get('/admin/leave_categories/{leave_category}/edit','LeaveCategoriesController@edit');
-// Update
-Route::put('/admin/leave_categories/{leave_category}','LeaveCategoriesController@update');
-// Delete
-Route::delete('/admin/leave_categories/{leave_category}','LeaveCategoriesController@delete');
+	// Index
+	Route::get('/positions','PositionsController@index');
+	// Create
+	Route::get('/positions/create','PositionsController@create');
+	// Show
+	Route::get('/positions/{position}', 'PositionsController@show');
+	// Store
+	Route::post('/positions','PositionsController@store');
+	// Edit
+	Route::get('/positions/{position}/edit','PositionsController@edit');
+	// Update
+	Route::put('/positions/{position}','PositionsController@update');
+	// Delete
+	Route::delete('/positions/{position}','PositionsController@delete');
 
-/////////// ANNUAL LEAVES
+	////////// LEAVE CATEGORIES
 
-// Read
-Route::get('/admin/leave_annual', 'AnnualLeavesController@index');
-// Store or Update
-Route::put('/admin/leave_annual/storeOrUpdate', 'AnnualLeavesController@storeOrUpdate');
+	// Index
+	Route::get('/leave_categories','LeaveCategoriesController@index');
+	// Create
+	Route::get('/leave_categories/create','LeaveCategoriesController@create');
+	// Show
+	Route::get('/leave_categories/{leave_category}', 'LeaveCategoriesController@show');
+	// Store
+	Route::post('/leave_categories','LeaveCategoriesController@store');
+	// Edit
+	Route::get('/leave_categories/{leave_category}/edit','LeaveCategoriesController@edit');
+	// Update
+	Route::put('/leave_categories/{leave_category}','LeaveCategoriesController@update');
+	// Delete
+	Route::delete('/leave_categories/{leave_category}','LeaveCategoriesController@delete');
 
-////////// LEAVE APPLICATIONS
+	/////////// ANNUAL LEAVES
 
-// Index
-Route::get('/admin/leave_applications','LeaveApplicationsController@index');
-// Create
-Route::get('/admin/leave_applications/create','LeaveApplicationsController@create');
-// Show
-Route::get('/admin/leave_applications/{leave_application}', 'LeaveApplicationsController@show');
-// Store
-Route::post('/admin/leave_applications','LeaveApplicationsController@store');
-// Edit
-Route::get('/admin/leave_applications/{leave_application}/edit','LeaveApplicationsController@edit');
-// Update
-Route::put('/admin/leave_applications/{leave_application}','LeaveApplicationsController@update');
-// Delete
-Route::delete('/admin/leave_applications/{leave_application}','LeaveApplicationsController@delete');
+	// Read
+	Route::get('/leave_annual', 'AnnualLeavesController@index');
+	// Store or Update
+	Route::put('/leave_annual/storeOrUpdate', 'AnnualLeavesController@storeOrUpdate');
 
-////////// DEDUCTIBLES
+	////////// LEAVE APPLICATIONS
 
-// Index
-Route::get('/admin/deductibles', 'DeductiblesController@index');
-// Create
-Route::get('/admin/deductibles/create', 'DeductiblesController@create');
-// Show
-Route::get('/admin/deductibles/{deductible}', 'DeductiblesController@show');
-// Store
-Route::post('/admin/deductibles', 'DeductiblesController@store');
-// Edit
-Route::get('/admin/deductibles/{deductible}/edit', 'DeductiblesController@edit');
-// Update
-Route::put('/admin/deductibles/{deductible}', 'DeductiblesController@update');
-// Delete
-Route::delete('/admin/deductibles/{deductible}', 'DeductiblesController@delete');
+	// Index
+	Route::get('/leave_applications','LeaveApplicationsController@index');
+	// Create
+	Route::get('/leave_applications/create','LeaveApplicationsController@create');
+	// Show
+	Route::get('/leave_applications/{leave_application}', 'LeaveApplicationsController@show');
+	// Store
+	Route::post('/leave_applications','LeaveApplicationsController@store');
+	// Edit
+	Route::get('/leave_applications/{leave_application}/edit','LeaveApplicationsController@edit');
+	// Update
+	Route::put('/leave_applications/{leave_application}','LeaveApplicationsController@update');
+	// Delete
+	Route::delete('/leave_applications/{leave_application}','LeaveApplicationsController@delete');
 
-////////// DEDUCTIBLE RECORDS
+	////////// DEDUCTIBLES
 
-// Read
-Route::get('/admin/deductible_records', 'DeductibleRecordsController@index');
-// Store
-Route::post('/admin/deductible_records/store', 'DeductibleRecordsController@store');
-// Edit 
-Route::get('/admin/deductible_records/{deductible_record}/edit', 'DeductibleRecordsController@edit'); 
-// Update
-Route::put('/admin/deductible_records/{deductible_record}', 'DeductibleRecordsController@update'); 
+	// Index
+	Route::get('/deductibles', 'DeductiblesController@index');
+	// Create
+	Route::get('/deductibles/create', 'DeductiblesController@create');
+	// Show
+	Route::get('/deductibles/{deductible}', 'DeductiblesController@show');
+	// Store
+	Route::post('/deductibles', 'DeductiblesController@store');
+	// Edit
+	Route::get('/deductibles/{deductible}/edit', 'DeductiblesController@edit');
+	// Update
+	Route::put('/deductibles/{deductible}', 'DeductiblesController@update');
+	// Delete
+	Route::delete('/deductibles/{deductible}', 'DeductiblesController@delete');
 
-////////// MONTHLY SALARIES OR PAYROLL
+	////////// DEDUCTIBLE RECORDS
 
-// Read
-Route::get('/admin/payroll', 'MonthlySalariesController@index');
-// Show
-Route::get('/admin/payroll/{monthly_salary}', 'MonthlySalariesController@show');
-// Store and Update
-Route::put('/admin/payroll/storeOrUpdate', 'MonthlySalariesController@storeOrUpdate');
+	// Read
+	Route::get('/deductible_records', 'DeductibleRecordsController@index');
+	// Store
+	Route::post('/deductible_records/store', 'DeductibleRecordsController@store');
+	// Edit 
+	Route::get('/deductible_records/{deductible_record}/edit', 'DeductibleRecordsController@edit'); 
+	// Update
+	Route::put('/deductible_records/{deductible_record}', 'DeductibleRecordsController@update'); 
+
+	////////// MONTHLY SALARIES OR PAYROLL
+
+	// Read
+	Route::get('/payroll', 'MonthlySalariesController@index');
+	// Show
+	Route::get('/payroll/{monthly_salary}', 'MonthlySalariesController@show');
+	// Store and Update
+	Route::put('/payroll/storeOrUpdate', 'MonthlySalariesController@storeOrUpdate');
+});

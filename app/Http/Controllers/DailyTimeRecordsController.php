@@ -37,7 +37,7 @@ class DailyTimeRecordsController extends Controller
 	        ->join('employees', 'employees.id', '=', 'daily_time_records.employee_id')->get();
     		return view('daily_time_records.store', compact('dtrFiltered'));
 		} else { // If there's no employee yet
-			return redirect('/admin/daily_time_records')->with('alert', "Create an employee first!");
+			return redirect('/daily_time_records')->with('alert', "Create an employee first!");
 		}
     }
 }

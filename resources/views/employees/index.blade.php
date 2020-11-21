@@ -9,7 +9,7 @@ Employees
 @endsection
 
 @section('addbtn')
-<a class="add" href="/admin/employees/create">Add an employee</a>
+<a class="add" href="/register">Go to Employee Register</a>
 @endsection
 
 @section('table')
@@ -41,9 +41,9 @@ Employees
 					<td>{{ $employee->birthdate }}</td>
 					<td>{{ $employee->gender }}</td>
 					<td class="settings">
-						<a class="edit" href="/admin/employees/{{ $employee->id }}/edit">Edit</a>
-						<a class="show" href="/admin/employees/{{ $employee->id }}">Show</a>
-						<form method='POST' action='/admin/employees/{{ $employee->id }}'>
+						<a class="edit" href="/employees/{{ $employee->id }}/edit">Edit</a>
+						<a class="show" href="/employees/{{ $employee->id }}">Show</a>
+						<form method='POST' action='/employees/{{ $employee->id }}'>
 							@method('DELETE')
 							@csrf
 							<input type="submit" class="delete" value="Delete">

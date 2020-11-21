@@ -9,7 +9,7 @@ Deductibles
 @endsection
 
 @section('addbtn')
-<a class="add" href="/admin/deductibles/create">Add a deductible</a>
+<a class="add" href="/deductibles/create">Add a deductible</a>
 @endsection
 
 @section('table')
@@ -29,9 +29,9 @@ Deductibles
 				<td>{{ $deductible->type }}</td>
 				<td>{{ $deductible->percentage }}%</td>
 				<td class="settings"> 
-					<a class="edit" href="/admin/deductibles/{{ $deductible->id }}/edit">Edit</a>
-					<a class="show" href="/admin/deductibles/{{ $deductible->id }}">Show</a>
-					<form method='POST' action='/admin/deductibles/{{ $deductible->id }}'>
+					<a class="edit" href="/deductibles/{{ $deductible->id }}/edit">Edit</a>
+					<a class="show" href="/deductibles/{{ $deductible->id }}">Show</a>
+					<form method='POST' action='/deductibles/{{ $deductible->id }}'>
 						@method('DELETE')
 						@csrf
 						<input type="submit" class="delete" value="Delete">

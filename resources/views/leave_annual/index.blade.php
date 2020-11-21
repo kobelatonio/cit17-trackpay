@@ -13,7 +13,7 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/admin/leave_annual/storeOrUpdate">
+<form class="filters-box" method="POST" action="/leave_annual/storeOrUpdate">
 	@method('PUT')
 	@csrf
 	<label for="leave">Leave Category</label>

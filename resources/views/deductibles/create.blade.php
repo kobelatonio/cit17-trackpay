@@ -9,7 +9,7 @@ TrackPay - Deductibles
 @endsection
 
 @section('content')
-<form method="POST" action="/admin/deductibles/" class="edit-form"> 
+<form method="POST" action="/deductibles/" class="edit-form"> 
 	@csrf 
 	<label for="type">Deductible Type :</label>
 	<input type="text" name="type" placeholder="Enter type" autofocus><br>
