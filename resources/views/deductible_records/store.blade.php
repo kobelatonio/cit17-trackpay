@@ -60,7 +60,7 @@ SEARCH FILTERS
 					@endif
 					</td>
 					<td>Php {{ $deductible_record->deduction_amount }}</td>
-					<td><a class="edit" href="/admin/deductible_records/{{ $deductible_record->id }}/edit">Edit</a></td>
+					<td><a class="edit" href="/deductible_records/{{ $deductible_record->id }}/edit">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>
