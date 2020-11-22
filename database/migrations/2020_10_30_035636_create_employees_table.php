@@ -18,11 +18,12 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('contact_number');
-            $table->string('email_address')->unique();
+            $table->string('email')->unique();
             $table->date('birthdate');
             $table->string('gender');
             $table->string('password');
             $table->foreignId('position_id')->constrained('positions')->onDelete('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

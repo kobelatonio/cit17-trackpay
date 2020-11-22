@@ -37,7 +37,7 @@ Employees
 						@endforeach
 					</td>
 					<td>{{ $employee->contact_number }}</td>
-					<td>{{ $employee->email_address }}</td>
+					<td>{{ $employee->email }}</td>
 					<td>{{ $employee->birthdate }}</td>
 					<td>{{ $employee->gender }}</td>
 					<td class="settings">

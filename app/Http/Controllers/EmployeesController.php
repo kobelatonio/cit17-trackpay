@@ -29,15 +29,18 @@ class EmployeesController extends Controller
 
     public function update(Employee $employee)
     {
-    	$employee->first_name = request()->first_name;
-    	$employee->last_name = request()->last_name;
-    	$employee->contact_number = request()->contact_number;
-    	$employee->email_address = request()->email_address;
-    	$employee->birthdate = request()->birthdate;
-    	$employee->gender = request()->gender;
-    	$position = Position::where('title', request()->title)->first();
-    	$employee->position_id = $position->id;
-    	$employee->save();
+        $validated_fields = request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'contact_number' => 'required',
+            'birthdate' => 'required|date_format:Y-m-d|before:today',
+            'gender' => 'required|in:Male,Female',
+            'position_id' => 'required|numeric|min:1',
+            'email' => 'required|email|unique:employees,email_address,'.$employee->id
+            // Even if the email_address is not edited, this will avoid having
+            // an error that the email_address already exists
+        ]);
+        $employee->update($validated_fields);
     	return redirect('/employees');
     }
 

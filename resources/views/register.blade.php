@@ -24,10 +24,10 @@ TrackPay - Employee Register
 			<option value="{{ $position->id }}">{{ $position->title }}</option>
 		@endforeach
 		</select>
-		<input type="email" name="email_address" placeholder="Enter email address">
+		<input type="email" name="email" placeholder="Enter email address">
 		<input type="password" name="password" placeholder="Enter password">
 		<div class="buttons">
-			<input type="submit" value="Submit">
+			<input type="submit" value="Register">
 		</div>
 	</form>
 </div>

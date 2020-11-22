@@ -55,3 +55,22 @@ function printPayslip() {
 	win.document.close();
 	win.print();
 }
+
+function check() {
+  if (document.getElementById('new_password').value ==
+    document.getElementById('confirm_new_password').value) {
+    document.getElementById('check_password_match').innerHTML = "";
+    document.getElementById('password_button').disabled = false;
+  } else {
+    document.getElementById('check_password_match').innerHTML = "passwords don't match";
+    document.getElementById('password_button').disabled = true;
+  }
+
+  if (document.getElementById('new_password').value.length >= 10) {
+    document.getElementById('check_password_length').innerHTML = "";
+    document.getElementById('password_button').disabled = false;
+  } else {
+    document.getElementById('check_password_length').innerHTML = "must be at least 10 characters";
+    document.getElementById('password_button').disabled = true;
+  }
+}

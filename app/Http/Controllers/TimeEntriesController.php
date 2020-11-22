@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use Auth;
 use App\Employee;
 use App\DailyTimeRecord;
 use App\Position;
@@ -16,19 +16,24 @@ class TimeEntriesController extends Controller
     }
 
     public function storeOrUpdate() {
-        $credentials = Employee::where(['email_address' => request()->email_address, 'password' => request()->password])->first();
+        $validated_fields = request()->validate([ 
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $employee = Auth::guard('employee')->user(); // Get the authenticated employee
         request()['date'] = date("Y-m-d"); // store current date in the request
         request()['time'] = date("H:i:s"); // store current time in the request
-        if($credentials) { // Check if the username and password pair is correct
-            $daily_time_record = DailyTimeRecord::where(['employee_id' => $credentials->id, 'date' => request()->date])->first();
+        if(Auth::guard('employee')->attempt(['email' => $validated_fields['email'], 'password' => $validated_fields['password']])) { 
+            // Check if the email and password pair is correct
+            $daily_time_record = DailyTimeRecord::where(['employee_id' => $employee->id, 'date' => request()->date])->first();
             if($daily_time_record) { // If a record in DTR exists based on employee id and date
                 if(request()->entry == "in") { // If user chose Time In
                     if($daily_time_record->time_in) { // If user has already timed in
                         $message_extension = " has already timed in at ".$daily_time_record->time_in;
                     } else { // If user hasn't timed in yet
-                        $time_in_remarks = $this->getTimeInRemarks($credentials->id,  request()->time); 
+                        $time_in_remarks = $this->getTimeInRemarks($employee->id,  request()->time); 
                         // Get remarks 
-                        $minutes_late = $this->getMinutesLate($credentials->id, request()->time); 
+                        $minutes_late = $this->getMinutesLate($employee->id, request()->time); 
                         // Get minutes_late
                         $daily_time_record->update([
                             'time_in' => request()->time, 
@@ -57,9 +62,9 @@ class TimeEntriesController extends Controller
                     $dtr = new DailyTimeRecord;
                     $dtr->time_in = request()->time;
                     $dtr->date = request()->date;
-                    $dtr->employee_id = $credentials->id;
+                    $dtr->employee_id = $employee->id;
                     // Get the position of the employee to access the shift_start and shift_end
-                    $position = Employee::where('employees.id', $credentials->id)
+                    $position = Employee::where('employees.id', $employee->id)
                         ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
                     $dtr->shift_start = $position->shift_start;
                     $dtr->shift_end = $position->shift_end;
@@ -71,10 +76,13 @@ class TimeEntriesController extends Controller
                     $message_extension = " hasn't timed in yet!";
                 }
             }
-            return redirect('/time-entry')->with('alert', $credentials->first_name." ".$credentials->last_name.$message_extension);
-        } else {
-            return redirect('/time-entry')->with('alert', "Incorrect email or password");
-        }
+            Auth::logout(); 
+            return redirect('/time-entry')->with('alert', $employee->first_name." ".$employee->last_name.$message_extension);
+        }        
+        Auth::logout(); 
+        Return back()->withErrors([
+            'credentials' => 'Incorrect email or password'
+        ]);
     }
 
     public function getTimeInRemarks($employee_id, $time_in)

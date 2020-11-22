@@ -386,7 +386,7 @@ button.delete, input.delete {
 	background: #0F5EF7;
 	padding: 18px 30px 30px ;
 	border-radius: 10px;
-	text-align: left;
+	text-align: center;
 	margin-top: 10px;
 }
 
@@ -460,7 +460,7 @@ div.home {
 }
 
 .errors {
-	background: #E9EFFE;	
+	background: #0F5EF7;	
 	padding: 10px 35px;
 	border-radius: 50px;
 	margin-top: 30px;
@@ -470,4 +470,12 @@ div.home {
 	display: block;
 	font-size: 16px;
 	font-weight: 400;
+	color: white;
+}
+
+#check_password_match, #check_password_length {
+	font-size: 13px;
+	margin-top: 10px;
+	display: block;
+	color: white;
 }

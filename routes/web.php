@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
+////////// ADMIN/EMPLOYEE CHANGE PASSWORD
+
+// Edit
+Route::get('/password/edit', 'AuthController@edit');
+// Update
+Route::put('/password/update', 'AuthController@update');
+
 ////////// ADMIN LOGIN
 
 // Index

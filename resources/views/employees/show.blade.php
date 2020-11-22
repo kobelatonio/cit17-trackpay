@@ -16,8 +16,8 @@ TrackPay - Employees
 	<input type="text" name="last_name" value="{{ $employee->last_name }}" readonly><br>
 	<label for="contact_number">Contact Number :</label>
 	<input type="text" name="contact_number" value="{{ $employee->contact_number }}" readonly><br>
-	<label for="email_address">Email Address :</label>
-	<input type="text" name="email_address" value="{{ $employee->email_address }}" readonly><br>
+	<label for="email">Email Address :</label>
+	<input type="text" name="email" value="{{ $employee->email }}" readonly><br>
 	<label for="birthdate">Birthdate :</label>
 	<input type="date" name="birthdate" value="{{ $employee->birthdate }}" readonly><br>
 	<label for="gender">Gender :</label>
