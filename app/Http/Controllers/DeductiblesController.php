@@ -23,12 +23,12 @@ class DeductiblesController extends Controller
 		return view('deductibles.create');
 	}
 
-	public function store()
+	public function store(Deductible $deductible)
 	{
-		$deductible = new Deductible;
-		$deductible->type = request()->type;
-		$deductible->percentage = request()->percentage;
-		$deductible->save();
+		$validated_fields=request()->validate([
+			'type'=>'required',
+			'percentage'=>'required']);
+		$deductible->create($validated_fields);
 		return redirect('/admin/deductibles');
 	}
 
@@ -38,10 +38,11 @@ class DeductiblesController extends Controller
 	}
 
 	public function update(Deductible $deductible)
-	{
-		$deductible->type = request()->type;
-		$deductible->percentage = request()->percentage;
-		$deductible->save();
+	{	
+		$validated_fields=request()->validate([
+			'type'=>'required',
+			'percentage'=>'required']);
+		$deductible->update($validated_fields);
 		return redirect('/admin/deductibles');
 	}
 

@@ -12,9 +12,10 @@ TrackPay - Deductibles
 <form method="POST" action="/admin/deductibles/" class="edit-form"> 
 	@csrf 
 	<label for="type">Deductible Type :</label>
-	<input type="text" name="type" placeholder="Enter type" autofocus><br>
+	<input type="text" name="type" placeholder="Enter type" autofocus required><br>
 	<label for="percentage">Percentage :</label>
-	<input type="number" name="percentage" step="0.01" placeholder="Enter percentage"><br>
+	<input type="number" name="percentage" step="0.01" placeholder="Enter percentage" required><br>
 	<input type="submit" value="Submit">
+@include('layouts.errors')
 </form>
 @endsection
