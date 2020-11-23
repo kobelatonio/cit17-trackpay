@@ -27,10 +27,10 @@ Route::put('/time-entry/update', 'TimeEntriesController@update');
 // Index
 Route::get('/admin/login', 'AdminLoginController@index');
 
-<<<<<<< HEAD
-=======
+//<<<<<< HEAD
+//=======
 ////////// ADMIN HOMEPAGE
->>>>>>> aa5c42a2b066680a5300f586a5ca2d372e46cbe5
+//>>>>>> aa5c42a2b066680a5300f586a5ca2d372e46cbe5
 
 // Index
 Route::get('/admin/home', 'HomeController@index');
@@ -61,7 +61,7 @@ Route::delete('/admin/employees/{employee}','EmployeesController@delete');
 
 ////////// POSITIONS
 
-<<<<<<< HEAD
+//<<<<<< HEAD
 Route::get('/admin/login', function () {
     return view('login-admin');
 });
@@ -86,7 +86,7 @@ Route::delete('/admin/leaves-categories/{id}','LeaveCategoriesController@delete'
 
 //Show
 Route::get('/admin/leaves-categories/{id}','LeaveCategoriesController@show');
-=======
+//=======
 // Index
 Route::get('/admin/positions','PositionsController@index');
 // Create
@@ -179,4 +179,5 @@ Route::get('/admin/payroll', 'MonthlySalariesController@index');
 Route::get('/admin/payroll/{monthly_salary}', 'MonthlySalariesController@show');
 // Store and Update
 Route::put('/admin/payroll/storeOrUpdate', 'MonthlySalariesController@storeOrUpdate');
->>>>>>> aa5c42a2b066680a5300f586a5ca2d372e46cbe5
+
+//>>>>>>> aa5c42a2b066680a5300f586a5ca2d372e46cbe5

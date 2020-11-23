@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
+<<<<<< HEAD
 =======
 
 >>>>>>> aa5c42a2b066680a5300f586a5ca2d372e46cbe5
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class LeaveCategoriesController extends Controller
 {
-<<<<<<< HEAD
+<<<<<< HEAD
     //Index
       public function index(){  
 
@@ -78,12 +78,19 @@ class LeaveCategoriesController extends Controller
         return view('leave_categories.show', compact('leave_category'));
     }
 
-    public function store()
+    public function store(LeaveCategory $leave_category)
     {
-        $leave_category = new LeaveCategory;
-        $leave_category->name = request()->name;
-        $leave_category->annual_leave_days = request()->annual_leave_days;
-        $leave_category->save();
+        // $leave_category = new LeaveCategory;
+        // $leave_category->name = request()->name;
+        // $leave_category->annual_leave_days = request()->annual_leave_days;
+        // $leave_category->save();
+        // request validation
+        $validated_fields = request()->validate([
+
+          'leave_name' => 'required',
+          'annual_leavedays' => 'required'
+        ]);
+        $leave_category ->create($validated_fields);
         return redirect('/admin/leave_categories');
     }
 
@@ -94,9 +101,16 @@ class LeaveCategoriesController extends Controller
 
     public function update(LeaveCategory $leave_category)
     {
-        $leave_category->name = request()->name;
-        $leave_category->annual_leave_days = request()->annual_leave_days;
-        $leave_category->save();
+        // $leave_category->name = request()->name;
+        // $leave_category->annual_leave_days = request()->annual_leave_days;
+        // $leave_category->save();
+        $validated_fields = request()->validate([
+
+          'leave_name' => 'required',
+          'annual_leavedays' => 'required'
+        ]);
+        
+        $leave_category ->update($validated_fields);
         return redirect('/admin/leave_categories');
     }
 
