@@ -13,13 +13,15 @@ TrackPay - Leave Categories
  		@csrf
   	<div class="form-group">
     	<label for="leaveName">Name of Leave ->></label>
-    	<input type="text" name="name" id="name-leave"
-    	placeholder="Type the name of the leave">
+    	<input type="text" name="leave_name" id="name-leave"
+    	required placeholder="Type the name of the leave">
+        @include('layouts.errors')
     </div>
     <div class="form-group">
     	<label for="daysOfLeave">Annual Leaves Day ->></label>
     	<input type="days" name="annual_leavedays" id="days-leave"
-    	placeholder="Input days of proposed leave">
+    	required placeholder="Input days of proposed leave">
+        @include('layouts.errors')
     </div>
     <button type="submit" class="btn btnprimary">Submit</button>
  </div>
