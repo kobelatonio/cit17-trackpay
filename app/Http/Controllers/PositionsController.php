@@ -23,15 +23,15 @@ class PositionsController extends Controller
         return view('positions.show', compact('position'));
     }
 
-    public function store()
+    public function store(Position $position)
     {
-        $position = new Position;
-        $position->title = request()->title;
-        $position->monthly_salary = request()->monthly_salary;
-        $position->shift_start = request()->shift_start;
-        $position->shift_end = request()->shift_end;
-        $position->save();
-        return redirect('/admin/positions');
+        $validated_fields=request()->validate([
+            'title'=>'required',
+            'monthly_salary'=>'required',
+            'shift_start'=>'required',
+            'shift_end'=> 'required']);
+        $position->create($validated_fields);
+            return redirect('/admin/positions');
     }
 
     public function edit(Position $position)
@@ -41,12 +41,13 @@ class PositionsController extends Controller
 
     public function update(Position $position)
     {
-        $position->title = request()->title;
-        $position->monthly_salary = request()->monthly_salary;
-        $position->shift_start = request()->shift_start;
-        $position->shift_end = request()->shift_end;
-        $position->save();
-        return redirect('/admin/positions');
+        $validated_fields=request()->validate([
+            'title'=>'required',
+            'monthly_salary'=>'required',
+            'shift_start'=>'required',
+            'shift_end'=> 'required']);
+        $position->update($validated_fields);
+            return redirect('/admin/positions');
     }
 
     public function delete(Position $position)
