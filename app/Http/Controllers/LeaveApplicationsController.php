@@ -37,14 +37,16 @@ class LeaveApplicationsController extends Controller
 
     public function store()
     {
-    	$leave_application = new LeaveApplication;
-    	$leave_application->employee_id = request()->employee_id;
-    	$leave_application->leave_category_id = request()->leave_category_id;
-    	$leave_application->start_date = request()->start_date;
-    	$leave_application->end_date = request()->end_date;
-    	$leave_application->status = request()->status;
-    	$leave_application->reason_for_rejection = request()->reason_for_rejection;
-    	$leave_application->save();
+     $validated_fields = request()->validate([
+            'employee_id' => 'required',
+            'leave_category_id' =>'required',
+            'start_date'=> 'required',
+            'end date' => 'required',
+            'status'=> 'required',
+            'reason_for_rejection' => 'required'
+
+        ]);
+        $leave_application->create($validated_fields);
     	return redirect('/admin/leave_applications');
     }
 
@@ -57,13 +59,16 @@ class LeaveApplicationsController extends Controller
 
     public function update(LeaveApplication $leave_application)
     {
-        $leave_application->employee_id = request()->employee_id;
-        $leave_application->leave_category_id = request()->leave_category_id;
-        $leave_application->start_date = request()->start_date;
-        $leave_application->end_date = request()->end_date;
-        $leave_application->status = request()->status;
-        $leave_application->reason_for_rejection = request()->reason_for_rejection;
-        $leave_application->save();
+        $validated_fields = request()->validate([
+            'employee_id' => 'required',
+            'leave_category_id' =>'required',
+            'start_date'=> 'required',
+            'end date' => 'required',
+            'status'=> 'required',
+            'reason_for_rejection' => 'required'
+        ]);
+
+        $leave_application->update($validated_fields);
     	return redirect('/admin/leave_applications');
     }
 
