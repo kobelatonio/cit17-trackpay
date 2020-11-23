@@ -14,13 +14,14 @@ class CreateMonthlySalariesTable extends Migration
     public function up()
     {
         Schema::create('monthly_salaries', function (Blueprint $table) {
+            $table->id();
             $table->date('date');
-            $table->foreignId('employee_id')->constrained('employees');
-            $table->decimal('gross_pay', 10, 5);
-            $table->decimal('total_deductibles', 10, 5);
-            $table->decimal('first_cutoff_pay', 10, 5);
-            $table->decimal('second_cutoff_pay', 10, 5);
-            $table->decimal('net_pay', 10, 5);
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+            $table->decimal('gross_pay', 10, 2);
+            $table->decimal('total_deductibles', 10, 2);
+            $table->decimal('first_cutoff_pay', 10, 2);
+            $table->decimal('second_cutoff_pay', 10, 2);
+            $table->decimal('net_pay', 10, 2);
             $table->timestamps();
         }); 
     }
@@ -32,6 +33,8 @@ class CreateMonthlySalariesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('monthly_salaries');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

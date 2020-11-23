@@ -23,12 +23,12 @@
   </svg>
   <h3 class="logo-text">TrackPay</h3>
 </div>
-<form class="login-form">
-  <h1>@yield('login')</h1>
-  <input type="text" id="username" name="username" placeholder="Input username">
-  <input type="password" id="password" name="password" placeholder="Input password">
-  @yield('button')
-</form>
+@yield('form')
+@if (session('alert'))
+  <div class="alert alert-success">
+    {{ session('alert') }}
+  </div>
+@endif
 <script src="/javascript/script.js" ></script>
 </body>
 </html>

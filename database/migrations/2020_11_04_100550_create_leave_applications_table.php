@@ -14,13 +14,14 @@ class CreateLeaveApplicationsTable extends Migration
     public function up()
     {
         Schema::create('leave_applications', function (Blueprint $table) {
-            $table->foreignId('employee_id')->constrained('employees');
-            $table->foreignId('leave_category_id')->constrained('leave_categories');
+            $table->id();
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+            $table->foreignId('leave_category_id')->constrained('leave_categories')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('status');
-            $table->string('reason_for_rejection');
-           
+            $table->string('reason_for_rejection')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,8 @@ class CreateLeaveApplicationsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('leave_applications');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

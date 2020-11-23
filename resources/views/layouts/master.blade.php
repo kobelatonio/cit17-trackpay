@@ -19,8 +19,14 @@
     @yield('filters')
 
     @yield('addbtn')
+    @if (session('alert'))
+      <div class="alert alert-success">
+        {{ session('alert') }}
+      </div>
+    @endif
   </div>
   @yield('table')
+  @yield('content')
 </div>
 </div>
 <script src="/javascript/script.js?v=1"></script>

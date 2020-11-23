@@ -14,11 +14,12 @@ class CreateDeductibleRecordsTable extends Migration
     public function up()
     {
         Schema::create('deductible_records', function (Blueprint $table) {
+            $table->id();
             $table->date('date');
-            $table->foreignId('employee_id')->constrained('employees');
-            $table->foreignId('deductible_id')->constrained('deductibles');
-            $table->integer('is_deducted');
-            $table->integer('deduction_amount');
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+            $table->foreignId('deductible_id')->constrained('deductibles')->onDelete('cascade');
+            $table->boolean('is_deducted');
+            $table->decimal('deduction_amount', 10, 2);
             $table->timestamps();
     });
 }
@@ -30,6 +31,8 @@ class CreateDeductibleRecordsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('deductible_records');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -23,6 +23,7 @@
 	</g>
 </svg>
 <h3 class="admin-text">admin</h3>
-<button class="logout">Log Out</button>
+<a class="time-entry" href="{{ url('/time-entry') }}" target="_blank">Time In/Out</a>
+<a class="logout">Log Out</a>
 </div>
 </div>
