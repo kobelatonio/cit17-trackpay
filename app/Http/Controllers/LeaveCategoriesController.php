@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\LeaveCategory;
 use Illuminate\Http\Request;
 
@@ -25,10 +24,11 @@ class LeaveCategoriesController extends Controller
 
     public function store()
     {
-        $leave_category = new LeaveCategory;
-        $leave_category->name = request()->name;
-        $leave_category->annual_leave_days = request()->annual_leave_days;
-        $leave_category->save();
+        $validated_fields = request()->validate([
+          'name' => 'required',
+          'annual_leave_days' => 'required'
+        ]);
+        LeaveCategory::create($validated_fields);
         return redirect('/leave_categories');
     }
 
@@ -39,9 +39,11 @@ class LeaveCategoriesController extends Controller
 
     public function update(LeaveCategory $leave_category)
     {
-        $leave_category->name = request()->name;
-        $leave_category->annual_leave_days = request()->annual_leave_days;
-        $leave_category->save();
+        $validated_fields = request()->validate([
+          'name' => 'required',
+          'annual_leave_days' => 'required'
+        ]);
+        $leave_category ->update($validated_fields);
         return redirect('/leave_categories');
     }
 
