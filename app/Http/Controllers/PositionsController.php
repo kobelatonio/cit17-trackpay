@@ -25,12 +25,13 @@ class PositionsController extends Controller
 
     public function store()
     {
-        $position = new Position;
-        $position->title = request()->title;
-        $position->monthly_salary = request()->monthly_salary;
-        $position->shift_start = request()->shift_start;
-        $position->shift_end = request()->shift_end;
-        $position->save();
+        $validated_fields = request()->validate([
+            'title' => 'required',
+            'monthly_salary' => 'required',
+            'shift_start' => 'required',
+            'shift_end' => 'required'
+        ]);
+        Position::create($validated_fields);
         return redirect('/positions');
     }
 
@@ -41,11 +42,12 @@ class PositionsController extends Controller
 
     public function update(Position $position)
     {
-        $position->title = request()->title;
-        $position->monthly_salary = request()->monthly_salary;
-        $position->shift_start = request()->shift_start;
-        $position->shift_end = request()->shift_end;
-        $position->save();
+        $validated_fields = request()->validate([
+            'title' => 'required',
+            'monthly_salary' => 'required',
+            'shift_start' => 'required',
+            'shift_end' => 'required']);
+        $position->update($validated_fields);
         return redirect('/positions');
     }
 
