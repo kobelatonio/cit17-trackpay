@@ -44,4 +44,5 @@ TrackPay - Leave Applications
 	@endif
 	<input type="submit" value="Submit">
 </form>
+@include('layouts.errors')
 @endsection

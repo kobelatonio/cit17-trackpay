@@ -26,9 +26,9 @@ TrackPay - Leave Applications
 	@endforeach
 	</select><br>
 	<label for="start_date">Start Date :</label>
-	<input type="date" name="start_date" placeholder="Enter start date"><br>
+	<input type="date" name="start_date" required placeholder="Enter start date"><br>
 	<label for="end_date">End Date :</label>
-	<input type="date" name="end_date" placeholder="Enter end date"><br>
+	<input type="date" name="end_date" required placeholder="Enter end date"><br>
 	<label for="gender">Status :</label>
 	<select name="status">
 		<option value="" disabled selected hidden>Choose status</option>
@@ -37,7 +37,8 @@ TrackPay - Leave Applications
 		<option value="Approved">Approved</option>
 	</select><br>
 	<label for="reason_for_rejection">If rejected, enter reason :</label>
-	<input type="text" name="reason_for_rejection" placeholder="Reason for rejection"><br>
+	<input type="text" name="reason_for_rejection" required placeholder="Reason for rejection"><br>
 	<input type="submit" value="Submit">
+	@include('layouts.errors')
 </form>
 @endsection
