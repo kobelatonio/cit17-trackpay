@@ -12,13 +12,14 @@ TrackPay - Positions
 <form method="POST" action="/positions/" class="edit-form"> 
 	@csrf 
 	<label for="title">Job Title :</label>
-	<input type="text" name="title" placeholder="Enter title" autofocus><br>
+	<input type="text" name="title" placeholder="Enter title" autofocus required><br>
 	<label for="monthly_salary">Monthly Salary :</label>
-	<input type="number" name="monthly_salary" placeholder="Enter monthly salary"><br>
+	<input type="number" name="monthly_salary" placeholder="Enter monthly salary" required><br>
 	<label for="shift_start">Shift Start :</label>
-	<input type="time" name="shift_start" placeholder="Enter shift start"><br>
+	<input type="time" name="shift_start" placeholder="Enter shift start" required><br>
 	<label for="shift_end">Shift End :</label>
-	<input type="time" name="shift_end" placeholder="Enter shift end"><br>
+	<input type="time" name="shift_end" placeholder="Enter shift end" required><br>
 	<input type="submit" value="Submit">
+	@include('layouts.errors')
 </form>
 @endsection

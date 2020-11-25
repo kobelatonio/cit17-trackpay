@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Required meta tags -->
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="/css/style.css?v=1">
@@ -24,11 +24,10 @@
   <h3 class="logo-text">TrackPay</h3>
 </div>
 @yield('form')
-@if (session('alert'))
-  <div class="alert alert-success">
-    {{ session('alert') }}
-  </div>
-@endif
+@include('layouts.errors')
+<div class="back">
+  <a href="/">HOME</a>
+</div>
 <script src="/javascript/script.js" ></script>
 </body>
 </html>

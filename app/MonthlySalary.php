@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Builder;
 class MonthlySalary extends Model
 {
     protected $guarded = [];
+
+    public function employee() {
+        return $this->belongsTo(Employee::class);
+    }
 }

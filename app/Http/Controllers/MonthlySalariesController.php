@@ -25,22 +25,20 @@ class MonthlySalariesController extends Controller
         		foreach($deductibles as $deductible) { 
                     // For each deductible type, check if an employee has an existing
                     // deductible record based on the date from the request
-        			$deductible_record = DeductibleRecord::where(['date' => request()->date."-01", 'deductible_id' => $deductible->id, 'employee_id' => $employee->id])->first();
+        			$deductible_record = $employee->deductible_records()->where('deductible_id', $deductible->id)->first();
     				if(!$deductible_record) { // If there's no deductible record, create a new one
     	    			$record = new DeductibleRecord;
                         $record->date = request()->date."-01";
                         $record->employee_id = $employee->id;
                         $record->deductible_id = $deductible->id;
                         $record->is_deducted = 1;
-                        $position = Employee::where('employees.id', $employee->id)->join('positions', 'employees.position_id', '=', 'positions.id')->first();
-                        $deduction_amount = ($deductible->percentage / 100) * $position->monthly_salary;
-                        $record->deduction_amount = $deduction_amount;
+                        $record->deduction_amount = ($deductible->percentage / 100) * $employee->position->monthly_salary;
                         $record->save();
                     }
-    	    		$totalDeductionAmount += DeductibleRecord::where(['date' => request()->date."-01", 'deductible_id' => $deductible->id, 'employee_id' => $employee->id])->first()->deduction_amount; 
+    	    		$totalDeductionAmount += $employee->deductible_records()->where('deductible_id', $deductible->id)->first()->deduction_amount;
                     // This is the sum of the amounts of all deductible records of an employee
         		}
-        		$monthly_salary = MonthlySalary::where(['date' => request()->date."-01", 'employee_id' => $employee->id])->first();
+        		$monthly_salary = $employee->monthly_salaries()->where('date', request()->date."-01")->first();
     			if(!$monthly_salary) { 
                     // If an employee has no record yet on the monthly_salaries, create a new one
                     $monthly_salary = new MonthlySalary;
@@ -49,25 +47,24 @@ class MonthlySalariesController extends Controller
                 // Otherwise, the following codes will only update the existing one
     			$monthly_salary->date = request()->date."-01";
     			$monthly_salary->employee_id = $employee->id;
-    			$position = Employee::where('employees.id', $employee->id)->join('positions', 'employees.position_id', '=', 'positions.id')->first();
-    			$monthly_salary->gross_pay = $position->monthly_salary;
+    			$monthly_salary->gross_pay = $employee->position->monthly_salary;
     			$monthly_salary->total_deductibles = $totalDeductionAmount;
-    			$monthly_salary->net_pay = $position->monthly_salary - $totalDeductionAmount;
-    			$monthly_salary->first_cutoff_pay = ($position->monthly_salary - $totalDeductionAmount)/2;
-    			$monthly_salary->second_cutoff_pay = ($position->monthly_salary - $totalDeductionAmount)/2;
+    			$monthly_salary->net_pay = $employee->position->monthly_salary - $totalDeductionAmount;
+    			$monthly_salary->first_cutoff_pay = ($employee->position->monthly_salary - $totalDeductionAmount)/2;
+    			$monthly_salary->second_cutoff_pay = ($employee->position->monthly_salary - $totalDeductionAmount)/2;
     			$monthly_salary->save();
         	}
     		$monthly_salaries = MonthlySalary::where(['date' => request()->date."-01"])->get();
     		return view('payroll.storeOrUpdate', compact('monthly_salaries', 'employees'));
         } else {
-            return redirect('/payroll')->with('alert', "Create an employee first!");
+            Return back()->withErrors([
+                'error' => 'An employee has to be registered first.'
+            ]);
         }
     }
 
     public function show(MonthlySalary $monthly_salary) {
-        $employee = Employee::where(['id' => $monthly_salary->employee_id])->first();
-        $position = Position::where(['id' => $employee->position_id])->first();
-    	$deductibleRecords = DeductibleRecord::where(['date' => $monthly_salary->date, 'employee_id' => $monthly_salary->employee_id, 'is_deducted' => 1])->join('deductibles', 'deductibles.id', '=', 'deductible_records.deductible_id')->get();
-    	return view('payroll.show', compact('monthly_salary', 'deductibleRecords', 'employee', 'position'));
+    	$deductible_records = $monthly_salary->employee->deductible_records()->where(['date' => $monthly_salary->date, 'is_deducted' => 1])->get();
+    	return view('payroll.show', compact('monthly_salary', 'deductible_records'));
     }
 }

@@ -9,7 +9,10 @@ Employees
 @endsection
 
 @section('addbtn')
-<a class="add" href="/register">Go to Employee Register</a>
+<div>
+	<a class="add" href="/employees/create">Go to Employee Register</a>
+	@include('layouts.errors')
+</div>
 @endsection
 
 @section('table')
@@ -30,15 +33,13 @@ Employees
 		<tbody>
 			@foreach($employees as $employee)
 				<tr>
-					<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+					<td>{{ $employee->full_name }}</td>
 					<td>
-						@foreach($positions as $position) 
-							{{ $employee->position_id == $position->id ? $position->title : '' }}
-						@endforeach
+						{{ $employee->position->title }}
 					</td>
-					<td>{{ $employee->contact_number }}</td>
+					<td>{{ $employee->formatted_contact_number }}</td>
 					<td>{{ $employee->email }}</td>
-					<td>{{ $employee->birthdate }}</td>
+					<td>{{ date('F j, Y', strtotime($employee->birthdate)) }}</td>
 					<td>{{ $employee->gender }}</td>
 					<td class="settings">
 						<a class="edit" href="/employees/{{ $employee->id }}/edit">Edit</a>

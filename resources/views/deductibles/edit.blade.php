@@ -15,8 +15,8 @@ TrackPay - Deductibles
 	<label for="type">Deductible Type :</label>
 	<input type="text" name="type" value="{{ $deductible->type }}" autofocus required><br>
 	<label for="percentage">Percentage :</label>
-	<input type="number" name="percentage" step="0.01" value="{{ $deductible->percentage }}"required><br>
+	<input type="number" name="percentage" step="0.01" value="{{ $deductible->percentage }}"required>%<br>
 	<input type="submit" value="Submit">
+	@include('layouts.errors')
 </form>
-@include('layouts.errors')
 @endsection

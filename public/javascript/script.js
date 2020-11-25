@@ -74,3 +74,10 @@ function check() {
     document.getElementById('password_button').disabled = true;
   }
 }
+
+function updateMinDate(date) {
+    var newdate = new Date(date);
+    newdate.setDate(newdate.getDate() + 1);
+    var formattedDate = newdate.getFullYear() + '-' + ("0" + (newdate.getMonth() + 1)).slice(-2) + '-' + ("0" + (newdate.getDate())).slice(-2);
+	document.getElementById('minDate').setAttribute("min", formattedDate);
+}

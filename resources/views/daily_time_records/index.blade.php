@@ -14,8 +14,9 @@ TrackPay - Daily Time Record
 	<form class="filters-box" action="/daily_time_records/store" method="POST">
 		@csrf
 		<label for="date">Date</label>
-		<input type="date" id="date" name="date" max="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}">
+		<input type="date" id="date" name="date" max="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}" required>
 		<input type="submit" value="Submit">
 	</form>
+	@include('layouts.errors')
 </div>
 @endsection

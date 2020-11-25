@@ -32,7 +32,7 @@ TrackPay - Admin Home
 			</tr>
 			@foreach($employeesWithBirthday as $employee)
 			<tr>
-				<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+				<td>{{ $employee->full_name }}</td>
 				<td>{{ date('F d, Y', strtotime($employee->birthdate)) }}</td>
 			</tr>
 			@endforeach

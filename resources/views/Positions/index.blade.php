@@ -30,8 +30,8 @@ Job Positions
 			<tr>
 				<td>{{ $position->title}}</td>
 				<td>Php {{ number_format($position->monthly_salary, 2, '.', ',') }}</td>
-				<td>{{ $position->shift_start}}</td>
-				<td>{{ $position->shift_end}}</td>
+				<td>{{ date('h:i A', strtotime($position->shift_start)) }}</td>
+				<td>{{ date('h:i A', strtotime($position->shift_end)) }}</td>
 				<td class="settings"> 
 					<a class="edit" href="/positions/{{ $position->id }}/edit">Edit</a>
 					<a class="show" href="/positions/{{ $position->id }}">Show</a>

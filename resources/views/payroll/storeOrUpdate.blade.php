@@ -43,11 +43,7 @@ SEARCH FILTER
 		<tbody>
 			@foreach($monthly_salaries as $monthly_salary)
 			<tr>
-				@foreach($employees as $employee) 
-					@if($employee->id == $monthly_salary->employee_id)
-						<td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
-					@endif
-				@endforeach
+				<td>{{ $monthly_salary->employee->full_name }}</td>
 				<td>Php {{ number_format($monthly_salary->gross_pay, 2, '.', ',') }}</td>
 				<td>Php {{ number_format($monthly_salary->total_deductibles, 2, '.', ',') }}</td>
 				<td>Php {{ number_format($monthly_salary->first_cutoff_pay, 2, '.', ',') }}</td>

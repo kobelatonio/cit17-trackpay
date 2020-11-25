@@ -12,6 +12,38 @@ class Employee extends Authenticatable
     // does not such as the position_id. This is only used in the time in/out
     // of the employees (with email and password) and updating their passwords.
 
+    public function position() {
+        return $this->belongsTo(Position::class);
+    }
+
+    public function daily_time_records() {
+        return $this->hasMany(DailyTimeRecord::class);
+    }
+
+    public function leave_applications() {
+        return $this->hasMany(LeaveApplication::class);
+    }
+
+    public function annual_leaves() {
+        return $this->hasMany(AnnualLeave::class);
+    }
+
+    public function deductible_records() {
+        return $this->hasMany(DeductibleRecord::class);
+    }
+
+    public function monthly_salaries() {
+        return $this->hasMany(MonthlySalary::class);
+    }
+
+    public function getFullNameAttribute() {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getFormattedContactNumberAttribute() {
+        return substr($this->contact_number, 0, 4).'-'.substr($this->contact_number, 5, 3).'-'.substr($this->contact_number, 8, 4);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

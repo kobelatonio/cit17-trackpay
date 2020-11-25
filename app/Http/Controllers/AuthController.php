@@ -39,7 +39,14 @@ class AuthController extends Controller
     	// There's a link to the page of employee register from the admin's employees page
     	// so the admin should be logged out when an employee registers or signs up
     	$positions = Position::get();
-    	return view('register', compact('positions'));
+    	if(count($positions) == 0) {
+    		return redirect('/')->withErrors([
+				'user_type' => 'A job position has to be created first.'
+			]);
+    	} else {
+    		return view('register', compact('positions'));
+    	}
+    	
     }
 
     public function store() {
