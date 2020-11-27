@@ -17,13 +17,7 @@
    <h1 class="filters-title">@yield('search-filters')</h1>
    <div class="forms">
     @yield('filters')
-
     @yield('addbtn')
-    @if (session('alert'))
-      <div class="alert alert-success">
-        {{ session('alert') }}
-      </div>
-    @endif
   </div>
   @yield('table')
   @yield('content')

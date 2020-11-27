@@ -24,20 +24,19 @@ class DailyTimeRecordsController extends Controller
 					$dtr = new DailyTimeRecord;
 					$dtr->date = request()->date;
 					$dtr->employee_id = $employee->id;
-	                $position = Employee::where('employees.id', $employee->id)
-	                ->join('positions', 'employees.position_id', '=', 'positions.id')->first();
-					$dtr->shift_start = $position->shift_start;
-					$dtr->shift_end = $position->shift_end;
+					$dtr->shift_start = $employee->position->shift_start;
+					$dtr->shift_end = $employee->position->shift_end;
 					$dtr->remarks = 'Absent';
 					$dtr->save();
 				}
 			}
 			// Get all DTR based on the date from the request
-			$dtrFiltered = DailyTimeRecord::where('daily_time_records.date', request()->date)
-	        ->join('employees', 'employees.id', '=', 'daily_time_records.employee_id')->get();
+			$dtrFiltered = DailyTimeRecord::where('daily_time_records.date', request()->date)->get();
     		return view('daily_time_records.store', compact('dtrFiltered'));
 		} else { // If there's no employee yet
-			return redirect('/daily_time_records')->with('alert', "Create an employee first!");
+			return back()->withErrors([
+				'error' => 'An employee has to be registered first.'
+			]);
 		}
     }
 }

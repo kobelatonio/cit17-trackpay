@@ -17,14 +17,9 @@ SEARCH FILTER
 	@method('PUT')
 	@csrf
 	<label for="leave">Leave Category</label>
-	<select name="name" id="name">
-		<option value="" disabled selected hidden>Enter category</option>
-		@foreach($leaveCategories as $leaveCategory)
-			@if($annualLeavesOfEmployees->first()->leave_category_id == $leaveCategory->id)
-			<option value="{{ $leaveCategory->name }}" selected>{{ $leaveCategory->name }} leave</option>
-			@else
-			<option value="{{ $leaveCategory->name }}">{{ $leaveCategory->name }} leave</option>
-			@endif
+	<select name="leave_category_id" id="name" required>
+		@foreach($leave_categories as $leave_category)
+			<option value="{{ $leave_category->id }}" {{ $annual_leaves->first()->leave_category_id == $leave_category->id ? "selected" : "" }}>{{ $leave_category->name }} Leave</option>
 		@endforeach
 	</select>
 	<input type="submit" value="Submit">
@@ -42,11 +37,11 @@ SEARCH FILTER
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($annualLeavesOfEmployees as $annualLeavesOfEmployee)
+			@foreach($annual_leaves as $annual_leave)
 				<tr>
-					<td>{{ $annualLeavesOfEmployee->first_name }} {{ $annualLeavesOfEmployee->last_name }}</td>
-					<td>{{ $annualLeavesOfEmployee->leave_days_spent }}</td>
-					<td>{{ $annualLeavesOfEmployee->leave_days_left }}</td>
+					<td>{{ $annual_leave->employee->first_name }} {{ $annual_leave->employee->last_name }}</td>
+					<td>{{ $annual_leave->leave_days_spent }}</td>
+					<td>{{ $annual_leave->leave_days_left }}</td>
 				</tr>
 			@endforeach
 		</tbody>

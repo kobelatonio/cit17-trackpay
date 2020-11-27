@@ -13,16 +13,19 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/leave_annual/storeOrUpdate">
-	@method('PUT')
-	@csrf
-	<label for="leave">Leave Category</label>
-	<select name="name" id="name">
-		<option value="" disabled selected hidden>Enter category</option>
-		@foreach($leaveCategories as $leaveCategory)
-			<option value="{{ $leaveCategory->name }}">{{ $leaveCategory->name }} leave</option>
-		@endforeach
-	</select>
-	<input type="submit" value="Submit">
-</form>
+<div class="filters">
+	<form class="filters-box" method="POST" action="/leave_annual/storeOrUpdate">
+		@method('PUT')
+		@csrf
+		<label for="leave">Leave Category</label>
+		<select name="leave_category_id" id="name" required>
+			<option value="" disabled selected hidden>Enter category</option>
+			@foreach($leaveCategories as $leaveCategory)
+				<option value="{{ $leaveCategory->id }}">{{ $leaveCategory->name }} Leave</option>
+			@endforeach
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+	@include('layouts.errors')
+</div>
 @endsection

@@ -5,7 +5,7 @@ TrackPay - Employees
 @endsection
 
 @section('page')
-<span class="gray">Show - </span>Employee {{ $employee->first_name }} {{ $employee->last_name }} 
+<span class="gray">Show - </span>Employee {{ $employee->full_name }} 
 @endsection
 
 @section('content')
@@ -23,11 +23,7 @@ TrackPay - Employees
 	<label for="gender">Gender :</label>
 	<input type="text" name="gender" value="{{ $employee->gender }}" readonly><br>
 	<label for="title">Position :</label>
-	@foreach($positions as $position)
-		@if($position->id == $employee->position_id)
-		<input type="text" name="gender" value="{{ $position->title }}" readonly><br>
-		@endif
-	@endforeach
+	<input type="text" name="gender" value="{{ $employee->position->title }}" readonly><br>
 	<a class="edit" href="/employees">Back</a>
 </form>
 @endsection

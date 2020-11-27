@@ -16,17 +16,17 @@ SEARCH FILTERS
 <form class="filters-box" method="POST" action="/deductible_records/store">
 	@csrf
 	<label for="deductible">Deductible</label>
-	<select name="type" id="type">
+	<select name="deductible_id" id="type" required>
 		@foreach($deductibles as $deductible)
 			@if($deductible_records->first()->deductible_id == $deductible->id)
-			<option value="{{ $deductible->type }}" selected>{{ $deductible->type }}</option>
+			<option value="{{ $deductible->id }}" selected>{{ $deductible->type }}</option>
 			@else
-			<option value="{{ $deductible->type }}">{{ $deductible->type }}</option>
+			<option value="{{ $deductible->id }}">{{ $deductible->type }}</option>
 			@endif
 		@endforeach
 	</select>
 	<label for="date">Month & Year</label>
-	<input type="month" id="date" name="date" value="{{ substr($deductible_records->first()->date, 0, 7) }}" max="{{ date('Y-m') }}">
+	<input type="month" id="date" name="date" value="{{ substr($deductible_records->first()->date, 0, 7) }}" max="{{ date('Y-m') }}" required>
 	<input type="submit" value="Submit">
 </form>
 @endsection
@@ -45,13 +45,7 @@ SEARCH FILTERS
 		<tbody>
 			@foreach($deductible_records as $deductible_record)
 				<tr>
-					<td>
-						@foreach($employees as $employee)
-						@if($employee->id == $deductible_record->employee_id)
-						{{ $employee->first_name }} {{ $employee->last_name }}
-						@endif
-						@endforeach
-					</td>
+					<td> {{ $deductible_record->employee->full_name }} </td>
 					<td>
 					@if($deductible_record->is_deducted) 
 					Deducted

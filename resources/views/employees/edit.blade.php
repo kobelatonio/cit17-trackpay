@@ -5,7 +5,7 @@ TrackPay - Employees
 @endsection
 
 @section('page')
-<span class="gray">Edit - </span>Employee {{ $employee->first_name }} {{ $employee->last_name }}
+<span class="gray">Edit - </span>Employee {{ $employee->full_name }}
 @endsection
 
 @section('content')
@@ -24,22 +24,13 @@ TrackPay - Employees
 	<input type="date" name="birthdate" value="{{ $employee->birthdate }}" required><br>
 	<label for="gender">Gender :</label>
 	<select name="gender" required>
-		@if($employee->gender == "Male")
-		<option value="Male" selected> Male </option>
-		<option value="Female"> Female </option>
-		@else
-		<option value="Male"> Male </option>
-		<option value="Female" selected> Female </option>
-		@endif
+		<option value="Male" {{ $employee->gender == "Male" ? "selected" : ""}}> Male </option>
+		<option value="Female" {{ $employee->gender == "Female" ? "selected" : ""}}> Female </option>
 	</select><br>
 	<label for="title">Position :</label>
 	<select name="position_id" required>
 	@foreach($positions as $position)
-		@if($position->id == $employee->position_id)
-		<option value="{{ $position->id }}" selected> {{ $position->title }} </option>
-		@else
-		<option value="{{ $position->id }}"> {{ $position->title }} </option>
-		@endif
+		<option value="{{ $position->id }}" {{ $employee->position_id == $position->id ? "selected" : ""}}> {{ $position->title }} </option>
 	@endforeach
 	</select><br>
 	<input type="submit" value="Submit">	

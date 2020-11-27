@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -73,8 +73,6 @@ Route::middleware('auth')->group(function() {
 	Route::get('/employees/create','EmployeesController@create');
 	// Show
 	Route::get('/employees/{employee}', 'EmployeesController@show');
-	// Store
-	Route::post('/employees','EmployeesController@store');
 	// Edit
 	Route::get('/employees/{employee}/edit','EmployeesController@edit');
 	// Update

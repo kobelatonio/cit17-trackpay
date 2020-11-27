@@ -13,11 +13,14 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
-	@method('PUT')
-	@csrf
-	<label for="date">Month & Year</label>
-	<input type="month" id="date" name="date" max="{{ date('Y-m') }}" value="{{ date('Y-m') }}" autofocus>
-	<input type="submit" value="Submit">
-</form>
+<div class="filters">
+	<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
+		@method('PUT')
+		@csrf
+		<label for="date">Month & Year</label>
+		<input type="month" id="date" name="date" max="{{ date('Y-m') }}" value="{{ date('Y-m') }}" autofocus>
+		<input type="submit" value="Submit">
+	</form>
+	@include('layouts.errors')
+</div>
 @endsection

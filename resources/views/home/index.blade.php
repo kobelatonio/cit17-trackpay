@@ -11,4 +11,5 @@ TrackPay
 	<a class="home" href="{{ url('/register') }}">Employee Register</a>
 	<a class="home" href="{{ url('/password/edit') }}">Change Password</a>
 </div>
+@include('layouts.errors')
 @endsection

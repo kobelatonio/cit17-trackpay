@@ -17,5 +17,6 @@ TrackPay - Deductible Records
 	<label for="is_deducted">Is Deducted : </label>
 	<input type="checkbox" id="is_deducted" name="is_deducted" autofocus {{ $deductible_record->is_deducted ? "checked" : "" }}>
 	<input type="submit" value="Submit">
+	@include('layouts.errors')
 </form>
 @endsection

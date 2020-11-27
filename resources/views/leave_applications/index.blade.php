@@ -9,13 +9,17 @@ Leave Applications
 @endsection
 
 @section('addbtn')
-<a class="add" href="/leave_applications/create">Add a leave application</a>
+<div>
+	<a class="add" href="/leave_applications/create">Add a leave application</a>
+	@include('layouts.errors')
+</div>
+
 @endsection
 
 @section('table')
 @if(!$leave_applications->isEmpty())
 <div class="table">
-	<table style="width: 100%">
+	<table>
 		<thead>
 			<tr>
 				<th>Employee Name</th>
@@ -31,17 +35,13 @@ Leave Applications
 			@foreach($leave_applications as $leave_application)
 			<tr>
 				<td>
-					@foreach($employees as $employee)
-					{{ $leave_application->employee_id == $employee->id ? $employee->first_name." ".$employee->last_name : ""}}
-					@endforeach
+					{{ $leave_application->employee->full_name }}
 				</td>
 				<td>
-					@foreach($leave_categories as $leave_category)
-					{{ $leave_application->leave_category_id == $leave_category->id ? $leave_category->name : ""}}
-					@endforeach
+					{{ $leave_application->leave_category->name }} Leave
 				</td>
-				<td>{{ $leave_application->start_date}}</td>
-				<td>{{ $leave_application->end_date}}</td>
+				<td>{{ date('M j, Y', strtotime($leave_application->start_date)) }}</td>
+				<td>{{ date('M j, Y', strtotime($leave_application->end_date))}}</td>
 				<td>{{ $leave_application->status}}</td>
 				<td>{{ $leave_application->reason_for_rejection}}</td>
 				<td class="settings"> 

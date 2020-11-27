@@ -5,7 +5,7 @@ TrackPay - Daily Time Record
 @endsection
 
 @section('page')
-<span class="gray">Daily Time </span> Record
+<span class="gray">Daily Time Record - </span> {{ date('M j, Y', strtotime($dtrFiltered->first()->date)) }}
 @endsection
 
 @section('filters')
@@ -39,21 +39,21 @@ TrackPay - Daily Time Record
 		<tbody>
 			@foreach($dtrFiltered as $dtr)
 				<tr>
-					<td>{{ $dtr->first_name }} {{ $dtr->last_name }}</td>
-					<td>{{ $dtr->shift_start }}</td>
-					<td>{{ $dtr->shift_end }}</td>
+					<td>{{ $dtr->employee->full_name }}</td>
+					<td>{{ date('h:i A', strtotime($dtr->shift_start)) }}</td>
+					<td>{{ date('h:i A', strtotime($dtr->shift_end)) }}</td>
 					<td>
 						@if(is_null($dtr->time_in))
 						-
 						@else
-						{{ $dtr->time_in }}
+						{{ $dtr->formatted_time_in }}
 						@endif
 					</td>
 					<td>
 						@if(is_null($dtr->time_out))
 						-
 						@else
-						{{ $dtr->time_out }}
+						{{ $dtr->formatted_time_out }}
 						@endif
 					</td>
 					<td>

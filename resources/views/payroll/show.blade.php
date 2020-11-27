@@ -6,7 +6,7 @@ TrackPay - Payroll
 
 @section('page')
 <div id="header">
-	<span class="gray">Payslip of </span> {{ $employee->first_name }} {{ $employee->last_name }} <span class="gray">for</span> {{ date('F Y', strtotime($monthly_salary->date)) }}
+	<span class="gray">Payslip of </span> {{ $monthly_salary->employee->full_name }} <span class="gray">for</span> {{ date('F Y', strtotime($monthly_salary->date)) }}
 </div>
 @endsection
 
@@ -16,7 +16,7 @@ TrackPay - Payroll
 		<thead>
 			<tr>
 				<th>EMPLOYEE NAME</th>
-				<th>{{ $employee->first_name }} {{ $employee->last_name }}</th>
+				<th>{{ $monthly_salary->employee->full_name }}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,7 +26,7 @@ TrackPay - Payroll
 			</tr>
 			<tr>
 				<td>POSITION </td>
-				<td>{{ $position->title }}</td>
+				<td>{{ $monthly_salary->employee->position->title }}</td>
 			</tr>
 			<tr>
 				<td>GROSS PAY </td>
@@ -36,11 +36,11 @@ TrackPay - Payroll
 				<td>DEDUCTIONS </td>
 				<td></td>
 			</tr>
-			@foreach($deductibleRecords as $deductibleRecord)
-				<tr>
-					<td>{{ $deductibleRecord->type }} </td>
-					<td>Php {{ number_format($deductibleRecord->deduction_amount, 2, '.', ',') }}</td>
-				</tr>
+			@foreach($deductible_records as $deductible_record)
+			<tr>
+				<td>{{ $deductible_record->deductible->type }} </td>
+				<td>Php {{ number_format($deductible_record->deduction_amount, 2, '.', ',') }}</td>
+			</tr>
 			@endforeach
 			<tr>
 				<td>TOTAL DEDUCTIONS </td>

@@ -26,8 +26,8 @@ Leave Categories
 		<tbody>
 			@foreach($leave_categories as $leave_category)
 			<tr>
-				<td>{{ $leave_category->name}}</td>
-				<td>{{ $leave_category->annual_leave_days}} day/s</td>
+				<td>{{ $leave_category->name }} Leave</td>
+				<td>{{ $leave_category->annual_leave_days }} day/s</td>
 				<td class="settings"> 
 					<a class="edit" href="/leave_categories/{{ $leave_category->id }}/edit">Edit</a>
 					<a class="show" href="/leave_categories/{{ $leave_category->id }}">Show</a>

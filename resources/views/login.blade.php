@@ -12,8 +12,4 @@ TrackPay - Admin Login
 	<input type="password" id="password" name="password" placeholder="Input password" required>
 	<input type="submit" value="Login" style="width: 100%;">
 </form>
-@include('layouts.errors')
-<div class="back">
-  <a href="/">HOME</a>
-</div>
 @endsection

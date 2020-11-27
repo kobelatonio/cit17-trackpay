@@ -29,7 +29,7 @@ class DeductiblesController extends Controller
 			'type' => 'required',
 			'percentage' => 'required'
 		]);
-		$deductible->create($validated_fields);
+		Deductible::create($validated_fields);
 		return redirect('/deductibles');
 	}
 

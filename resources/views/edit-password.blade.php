@@ -26,8 +26,4 @@ TrackPay - Change Password
 		</div>
 	</form>
 </div>
-@include('layouts.errors')
-<div class="back">
-  <a href="/">HOME</a>
-</div>
 @endsection

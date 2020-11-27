@@ -19,13 +19,13 @@ TrackPay - Leave Applications
 	<label for="title">Leave Category :</label>
 	@foreach($leave_categories as $leave_category)
 		@if($leave_application->leave_category_id == $leave_category->id)
-		<input type="text" name="title" value="{{ $leave_category->name }}" readonly><br>
+		<input type="text" name="title" value="{{ $leave_category->name }} Leave" readonly><br>
 		@endif
 	@endforeach
 	<label for="start_date">Start Date :</label>
-	<input type="text" name="start_date" value="{{$leave_application->start_date}}" readonly><br>
+	<input type="text" name="start_date" value="{{ date('F j, Y', strtotime($leave_application->start_date)) }}" readonly><br>
 	<label for="end_date">End Date :</label>
-	<input type="text" name="end_date" value="{{$leave_application->end_date}}" readonly><br>
+	<input type="text" name="end_date" value="{{ date('F j, Y', strtotime($leave_application->end_date)) }}" readonly><br>
 	<label for="status">Status :</label>
 	<input type="text" name="status" value="{{ $leave_application->status }}" readonly><br>
 	@if($leave_application->reason_for_rejection)
