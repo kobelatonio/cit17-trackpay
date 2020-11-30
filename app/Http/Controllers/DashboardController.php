@@ -10,7 +10,10 @@ use App\DailyTimeRecord;
 class DashboardController extends Controller
 {
     public function index() {
+        // Get total number of employees
     	$totalEmployees = Employee::get()->count();
+
+        // Get percentage of punctuality for current month
     	$totalDTRForCurrentMonth = DailyTimeRecord::whereBetween('date', [date('Y-m'.'-01'), date('Y-m'.'-31')])->get()->count();
     	$totalNumberOfEarlyForCurrentMonth = DailyTimeRecord::whereBetween('date', [date('Y-m'.'-01'), date('Y-m'.'-31')])->where(['remarks' => 'Early'])->get()->count();
         if($totalDTRForCurrentMonth == 0) {
@@ -18,26 +21,28 @@ class DashboardController extends Controller
         } else {
             $punctuality = round(($totalNumberOfEarlyForCurrentMonth / $totalDTRForCurrentMonth) * 100, 0);
         }
+
+        // Get number of days before payday
     	if(date('d') > 0 && date('d') <= 15) {
     		$daysBeforePayday = 15-date('d');
     	} else {
-    		if(date('m') == 1 || date('m') == 3 || date('m') == 5 || date('m') == 7 || date('m') == 8 || date('m') == 10 || date('m') == 12) {
+            $daysInCurrentMonth = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
+    		if($daysInCurrentMonth == 31) {
     			$daysBeforePayday = 31-date('d');
     		} else {
     			$daysBeforePayday = 30-date('d');
     		}
     	}
+
+        // Get all employees with birthdays in current month
     	$employees = Employee::get(); 
     	$employeesWithBirthday = [];
-    	$count = 0;
     	foreach($employees as $employee) {
-    		$birthdate = $employee->birthdate; 
-    		$month = date("m", strtotime($birthdate));
-    		if($month == date('m')) {
+    		if(date("m", strtotime($employee->birthdate)) == date('m')) {
     			$employeesWithBirthday[] = $employee;
-    			$count += 1;
     		}
     	}
+
     	return view('dashboard.index', compact('totalEmployees', 'punctuality', 'daysBeforePayday', 'employeesWithBirthday'));
     }
 }

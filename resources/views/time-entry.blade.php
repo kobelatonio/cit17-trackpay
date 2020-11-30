@@ -21,4 +21,7 @@ TrackPay - Employee Time In/Out
 		</div>
 	</form>
 </div>
+<div class="back">
+  <a href="/">HOME</a>
+</div>
 @endsection

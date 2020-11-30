@@ -25,8 +25,8 @@ class MonthlySalariesController extends Controller
         		foreach($deductibles as $deductible) { 
                     // For each deductible type, check if an employee has an existing
                     // deductible record based on the date from the request
-        			$deductible_record = $employee->deductible_records()->where(["date" => request()->date."-01", 'deductible_id', $deductible->id])->first();
-    				if(!$deductible_record) { // If there's no deductible record, create a new one
+    				if(!$employee->deductible_records()->where(["date" => request()->date."-01", "deductible_id" => $deductible->id])->first()) { 
+                        // If there's no deductible record, create a new one
     	    			$record = new DeductibleRecord;
                         $record->date = request()->date."-01";
                         $record->employee_id = $employee->id;

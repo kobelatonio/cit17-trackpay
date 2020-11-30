@@ -29,13 +29,18 @@ Deductibles
 				<td>{{ $deductible->type }}</td>
 				<td>{{ $deductible->percentage }}%</td>
 				<td class="settings"> 
-					<a class="edit" href="/deductibles/{{ $deductible->id }}/edit">Edit</a>
-					<a class="show" href="/deductibles/{{ $deductible->id }}">Show</a>
-					<form method='POST' action='/deductibles/{{ $deductible->id }}'>
-						@method('DELETE')
-						@csrf
-						<input type="submit" class="delete" value="Delete">
-					</form>
+					<select onchange="location = this.value;" class="settings">
+						<option value="" disabled selected hidden>Settings</option>
+						<option value="/deductibles/{{ $deductible->id }}/edit">
+							Edit
+						</option>
+						<option value="/deductibles/{{ $deductible->id }}">
+							Show
+						</option>
+						<option value="/deductibles/{{ $deductible->id }}/delete">
+							Delete
+						</option>
+					</select>
 				</td>
 			</tr>
 			@endforeach

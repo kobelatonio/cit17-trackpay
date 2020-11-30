@@ -45,13 +45,18 @@ Leave Applications
 				<td>{{ $leave_application->status}}</td>
 				<td>{{ $leave_application->reason_for_rejection}}</td>
 				<td class="settings"> 
-					<a class="edit" href="/leave_applications/{{ $leave_application->id }}/edit">Edit</a>
-					<a class="show" href="/leave_applications/{{ $leave_application->id }}">Show</a>
-					<form method='POST' action='/leave_applications/{{ $leave_application->id }}'>
-						@method('DELETE')
-						@csrf
-						<input type="submit" class="delete" value="Delete">
-					</form>
+					<select onchange="location = this.value;" class="settings">
+						<option value="" disabled selected hidden>Settings</option>
+						<option value="/leave_applications/{{ $leave_application->id }}/edit">
+							Edit
+						</option>
+						<option value="/leave_applications/{{ $leave_application->id }}">
+							Show
+						</option>
+						<option value="/leave_applications/{{ $leave_application->id }}/delete">
+							Delete
+						</option>
+					</select>
 				</td>
 			</tr>
 			@endforeach

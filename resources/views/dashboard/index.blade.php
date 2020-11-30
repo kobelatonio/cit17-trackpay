@@ -28,7 +28,7 @@ TrackPay - Admin Home
 	<div class="birthdays">
 		<table class="birthday">
 			<tr>
-				<th colspan="2">Employees with birthday in current month</th>
+				<th colspan="2">Employees with birthdays in current month</th>
 			</tr>
 			@foreach($employeesWithBirthday as $employee)
 			<tr>

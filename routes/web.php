@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function() {
 	// Update
 	Route::put('/positions/{position}','PositionsController@update');
 	// Delete
-	Route::delete('/positions/{position}','PositionsController@delete');
+	Route::get('/positions/{position}/delete','PositionsController@delete');
 
 	////////// LEAVE CATEGORIES
 
@@ -112,7 +112,7 @@ Route::middleware('auth')->group(function() {
 	// Update
 	Route::put('/leave_categories/{leave_category}','LeaveCategoriesController@update');
 	// Delete
-	Route::delete('/leave_categories/{leave_category}','LeaveCategoriesController@delete');
+	Route::get('/leave_categories/{leave_category}/delete','LeaveCategoriesController@delete');
 
 	/////////// ANNUAL LEAVES
 
@@ -136,7 +136,7 @@ Route::middleware('auth')->group(function() {
 	// Update
 	Route::put('/leave_applications/{leave_application}','LeaveApplicationsController@update');
 	// Delete
-	Route::delete('/leave_applications/{leave_application}','LeaveApplicationsController@delete');
+	Route::get('/leave_applications/{leave_application}/delete','LeaveApplicationsController@delete');
 
 	////////// DEDUCTIBLES
 
@@ -153,7 +153,7 @@ Route::middleware('auth')->group(function() {
 	// Update
 	Route::put('/deductibles/{deductible}', 'DeductiblesController@update');
 	// Delete
-	Route::delete('/deductibles/{deductible}', 'DeductiblesController@delete');
+	Route::get('/deductibles/{deductible}/delete', 'DeductiblesController@delete');
 
 	////////// DEDUCTIBLE RECORDS
 

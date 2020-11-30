@@ -25,9 +25,6 @@
 </div>
 @yield('form')
 @include('layouts.errors')
-<div class="back">
-  <a href="/">HOME</a>
-</div>
 <script src="/javascript/script.js" ></script>
 </body>
 </html>

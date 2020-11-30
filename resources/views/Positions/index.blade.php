@@ -33,13 +33,18 @@ Job Positions
 				<td>{{ date('h:i A', strtotime($position->shift_start)) }}</td>
 				<td>{{ date('h:i A', strtotime($position->shift_end)) }}</td>
 				<td class="settings"> 
-					<a class="edit" href="/positions/{{ $position->id }}/edit">Edit</a>
-					<a class="show" href="/positions/{{ $position->id }}">Show</a>
-					<form method='POST' action='/positions/{{ $position->id }}'>
-						@method('DELETE')
-						@csrf
-						<input type="submit" class="delete" value="Delete">
-					</form>
+					<select onchange="location = this.value;" class="settings">
+						<option value="" disabled selected hidden>Settings</option>
+						<option value="/positions/{{ $position->id }}/edit">
+							Edit
+						</option>
+						<option value="/positions/{{ $position->id }}">
+							Show
+						</option>
+						<option value="/positions/{{ $position->id }}/delete">
+							Delete
+						</option>
+					</select>
 				</td>
 			</tr>
 			@endforeach

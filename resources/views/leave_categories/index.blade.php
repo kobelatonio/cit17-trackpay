@@ -29,13 +29,18 @@ Leave Categories
 				<td>{{ $leave_category->name }} Leave</td>
 				<td>{{ $leave_category->annual_leave_days }} day/s</td>
 				<td class="settings"> 
-					<a class="edit" href="/leave_categories/{{ $leave_category->id }}/edit">Edit</a>
-					<a class="show" href="/leave_categories/{{ $leave_category->id }}">Show</a>
-					<form method='POST' action='/leave_categories/{{ $leave_category->id }}'>
-						@method('DELETE')
-						@csrf
-						<input type="submit" class="delete" value="Delete">
-					</form>
+					<select onchange="location = this.value;" class="settings">
+						<option value="" disabled selected hidden>Settings</option>
+						<option value="/leave_categories/{{ $leave_category->id }}/edit">
+							Edit
+						</option>
+						<option value="/leave_categories/{{ $leave_category->id }}">
+							Show
+						</option>
+						<option value="/leave_categories/{{ $leave_category->id }}/delete">
+							Delete
+						</option>
+					</select>
 				</td>
 			</tr>
 			@endforeach

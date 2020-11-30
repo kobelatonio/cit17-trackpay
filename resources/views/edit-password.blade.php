@@ -26,4 +26,7 @@ TrackPay - Change Password
 		</div>
 	</form>
 </div>
+<div class="back">
+  <a href="/">HOME</a>
+</div>
 @endsection
