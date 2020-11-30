@@ -285,6 +285,8 @@ table {
 	margin-top: 30px;
 	border-spacing: 1px;
 	display: inline-block; 
+	table-layout: fixed; 
+	width: 100%;
 }
 
 th {
@@ -329,30 +331,20 @@ td.settings {
   	gap: 5px;
 }
 
-a.edit, a.show, button.delete, input.delete {
-	flex: 1;
+select.settings {
+	color: #0F5EF7;
+	margin-right: 0px;
+}
+
+a.edit {
+	flex-grow: 100%;
 	color: white;
 	border-radius: 5px;
 	text-decoration: none;
 	font-weight: 300;
 	font-size: 13px;
-}
-
-a.edit {
 	background: #0F5EF7;
 	padding: 8px 30px;
-	display: inline-block;
-}
-
-a.show {
-	background: #6797f5;
-	padding: 8px 25px;
-}
-
-button.delete, input.delete {
-	background: #808CA3;
-	padding: 8px 21px;
-	cursor: pointer;
 }
 
 /*** LOGIN PAGES ***/

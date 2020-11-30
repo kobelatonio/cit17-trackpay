@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function() {
 	// Update
 	Route::put('/employees/{employee}','EmployeesController@update');
 	// Delete
-	Route::delete('/employees/{employee}','EmployeesController@delete');
+	Route::get('/employees/{employee}/delete','EmployeesController@delete');
 
 	////////// POSITIONS
 

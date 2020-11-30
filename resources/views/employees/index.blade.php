@@ -42,13 +42,18 @@ Employees
 					<td>{{ date('F j, Y', strtotime($employee->birthdate)) }}</td>
 					<td>{{ $employee->gender }}</td>
 					<td class="settings">
-						<a class="edit" href="/employees/{{ $employee->id }}/edit">Edit</a>
-						<a class="show" href="/employees/{{ $employee->id }}">Show</a>
-						<form method='POST' action='/employees/{{ $employee->id }}'>
-							@method('DELETE')
-							@csrf
-							<input type="submit" class="delete" value="Delete">
-						</form>
+						<select onchange="location = this.value;" class="settings">
+							<option value="" disabled selected hidden>Settings</option>
+							<option value="/employees/{{ $employee->id }}/edit">
+								Edit
+							</option>
+							<option value="/employees/{{ $employee->id }}">
+								Show
+							</option>
+							<option value="/employees/{{ $employee->id }}/delete">
+								Delete
+							</option>
+						</select>
 					</td>
 				</tr>
 			@endforeach
