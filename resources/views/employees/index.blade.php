@@ -10,7 +10,7 @@ Employees
 
 @section('addbtn')
 <div>
-	<a class="add" href="/employees/create">Go to Employee Register</a>
+	<a class="add" href="/employees/create">Add an Employee</a>
 	@include('layouts.errors')
 </div>
 @endsection

@@ -12,6 +12,8 @@ class Employee extends Authenticatable
     // does not such as the position_id. This is only used in the time in/out
     // of the employees (with email and password) and updating their passwords.
 
+    protected $guarded = [];
+
     public function position() {
         return $this->belongsTo(Position::class);
     }

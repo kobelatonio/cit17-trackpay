@@ -22,9 +22,8 @@ class EmployeesController extends Controller
                 'error' => 'A job position has to be created first.'
             ]);
         } else {
-            return redirect('/register');
+            return view('employees.create', compact('positions'));
         }
-        return view('employees.index', compact('employees'));
     }
 
     public function show(Employee $employee)

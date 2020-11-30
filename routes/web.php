@@ -40,13 +40,6 @@ Route::put('/time-entry/storeOrUpdate', 'TimeEntriesController@storeOrUpdate');
 // Update
 Route::put('/time-entry/update', 'TimeEntriesController@update');
 
-////////// EMPLOYEE REGISTER
-
-// Register 
-Route::get('/register', 'AuthController@register');
-// Store 
-Route::post('/register', 'AuthController@store');
-
 Route::middleware('auth')->group(function() { 
 	////////// ADMIN LOGOUT
 
@@ -73,6 +66,8 @@ Route::middleware('auth')->group(function() {
 	Route::get('/employees/create','EmployeesController@create');
 	// Show
 	Route::get('/employees/{employee}', 'EmployeesController@show');
+	// Store
+	Route::post('/employees','AuthController@store');
 	// Edit
 	Route::get('/employees/{employee}/edit','EmployeesController@edit');
 	// Update

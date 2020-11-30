@@ -34,21 +34,6 @@ class AuthController extends Controller
 		return redirect('/'); 
     }
 
-    public function register() {
-    	Auth::logout(); 
-    	// There's a link to the page of employee register from the admin's employees page
-    	// so the admin should be logged out when an employee registers or signs up
-    	$positions = Position::get();
-    	if(count($positions) == 0) {
-    		return redirect('/')->withErrors([
-				'user_type' => 'A job position has to be created first.'
-			]);
-    	} else {
-    		return view('register', compact('positions'));
-    	}
-    	
-    }
-
     public function store() {
     	$validated_fields = request()->validate([ 
 			'first_name' => 'required',
@@ -62,7 +47,7 @@ class AuthController extends Controller
 		]);
 		$validated_fields['password'] = bcrypt($validated_fields['password']);
 		$employee = Employee::create($validated_fields); 
-		return redirect('/');
+		return redirect('/employees');
     }
 
     public function edit() {
