@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use DB;
+
 
 class DeductiblesTableSeeder extends Seeder
 {
@@ -14,9 +14,9 @@ class DeductiblesTableSeeder extends Seeder
     public function run()
     {
         $deductibles = [
-        	['name'=>'GSIS', 'description'=>'9%'],
-        	['name'=>'PhilHealth', 'description'=>'1.5%'],
-        	['name'=>'Pag-IBIG', 'description'=>'2%'],
+        	['type'=>'GSIS', 'percentage'=>'9'],
+        	['type'=>'PhilHealth', 'percentage'=>'1.5'],
+        	['type'=>'Pag-IBIG', 'percentage'=>'2'],
         ];
 
         DB::table('deductibles')->insert($deductibles);
