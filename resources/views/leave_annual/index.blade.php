@@ -14,8 +14,7 @@ SEARCH FILTER
 
 @section('filters')
 <div class="filters">
-	<form class="filters-box" method="POST" action="/leave_annual/storeOrUpdate">
-		@method('PUT')
+	<form class="filters-box" method="GET" action="/leave_annual/filter">
 		@csrf
 		<label for="leave">Leave Category</label>
 		<select name="leave_category_id" id="name" required>

@@ -14,7 +14,7 @@ class DailyTimeRecordsController extends Controller
         return view('daily_time_records.index');
     }
 
-    public function store() {
+    public function filter() {
 		$employees = Employee::get();
 		if(!$employees->isEmpty()) { // If there are employees
 			foreach($employees as $employee) {
@@ -31,8 +31,11 @@ class DailyTimeRecordsController extends Controller
 				}
 			}
 			// Get all DTR based on the date from the request
-			$dtrFiltered = DailyTimeRecord::where('daily_time_records.date', request()->date)->get();
-    		return view('daily_time_records.store', compact('dtrFiltered'));
+			$dtrFiltered = DailyTimeRecord::where('daily_time_records.date', request()->date)
+				->join('employees', 'employees.id', '=', 'daily_time_records.employee_id')
+				->orderBy('employees.first_name', 'ASC')
+				->paginate(10);
+    		return view('daily_time_records.filter', compact('dtrFiltered'));
 		} else { // If there's no employee yet
 			return back()->withErrors([
 				'error' => 'An employee has to be registered first.'

@@ -11,16 +11,15 @@ class LeaveApplicationsController extends Controller
 {
     public function index()
     {
-    	$leave_applications = LeaveApplication::get();
-    	$leave_categories = LeaveCategory::get();
-    	$employees = Employee::get();
+    	$leave_applications = LeaveApplication::orderBy('start_date', 'DESC')
+                ->paginate(10);
     	return view('leave_applications.index', compact('employees', 'leave_categories', 'leave_applications'));
     }
 
     public function create()
     {
     	$leave_categories = LeaveCategory::get();
-    	$employees = Employee::get();
+    	$employees = Employee::orderBy('first_name', 'ASC')->get();
     	if(!$leave_categories->isEmpty() && !$employees->isEmpty()) {
     		return view('leave_applications.create', compact('employees', 'leave_categories'));
     	} else {

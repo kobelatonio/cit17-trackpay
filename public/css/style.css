@@ -325,12 +325,6 @@ td.total, td#total {
 	background: #E2E3E8;
 }
 
-td.settings {
-	display: flex;
-  	flex-wrap: wrap;
-  	gap: 5px;
-}
-
 select.settings {
 	color: #0F5EF7;
 	margin-right: 0px;
@@ -470,4 +464,30 @@ div.home {
 	margin-top: 10px;
 	display: block;
 	color: white;
+}
+
+/***** PAGINATION *****/
+
+.pagination {
+	list-style-type: none;
+	display: flex;
+	margin-top: 10px;
+}
+
+.page-item {
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: #808CA3;
+	background: #E9EFFE;
+	margin-right: 20px;
+	display: inline-block;
+	flex: 1;
+}
+
+.page-item a {
+	text-decoration: none;
+}
+
+.pagination li.active {
+	background: #E2E3E8;
 }

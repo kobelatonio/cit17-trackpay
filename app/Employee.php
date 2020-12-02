@@ -46,6 +46,15 @@ class Employee extends Authenticatable
         return substr($this->contact_number, 0, 4).'-'.substr($this->contact_number, 5, 3).'-'.substr($this->contact_number, 8, 4);
     }
 
+    public function getNthBirthdayAttribute() {
+        $number = date_diff(date_create($this->birthdate), date_create(date('Y-m-d', strtotime('12/31'))))->y;
+        $ends = array('th','st','nd','rd','th','th','th','th','th','th');
+        if ((($number % 100) >= 11) && (($number%100) <= 13))
+            return $number.'th';
+        else
+            return $number.$ends[$number % 10];
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -11,8 +11,7 @@ TrackPay - Daily Time Record
 @section('filters')
 <div class="filters">
 	<h1 class="filters-title">SEARCH FILTER</h1>
-	<form class="filters-box" action="/daily_time_records/store" method="POST">
-		@method('PUT')
+	<form class="filters-box" action="/daily_time_records/filter" method="GET">
 		@csrf
 		<label for="date">Date</label>
 		<input type="date" id="date" name="date" value="{{ $dtrFiltered->first()->date }}" max="{{ date('Y-m-d') }}">
@@ -81,5 +80,9 @@ TrackPay - Daily Time Record
 			@endforeach
 		</tbody>
 	</table>
+</div>
+
+<div class="pagination">
+	<div class="previous">{{ $dtrFiltered->appends(request()->input())->links() }}</div>
 </div>
 @endsection

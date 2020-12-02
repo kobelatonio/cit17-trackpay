@@ -14,7 +14,7 @@ $factory->define(Employee::class, function (Faker $faker) {
         'first_name' => $gender == 'Male' ? $faker->firstNameMale : $faker->firstNameFemale,
         'last_name' => $faker->lastName,
         'contact_number' => '0'.mt_rand(9000000000, 9999999999),
-        'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'birthdate' => $faker->date($format = 'Y-m-d', $max = '-20 years'),
         'gender' => $gender,
         'email' => $faker->email,
         'password' => bcrypt('passwordpassword'), 

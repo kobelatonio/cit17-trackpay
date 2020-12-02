@@ -14,8 +14,7 @@ SEARCH FILTER
 
 @section('filters')
 <div class="filters">
-	<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
-		@method('PUT')
+	<form class="filters-box" method="GET" action="/payroll/filter">
 		@csrf
 		<label for="date">Month & Year</label>
 		<input type="month" id="date" name="date" max="{{ date('Y-m') }}" value="{{ date('Y-m') }}" autofocus>

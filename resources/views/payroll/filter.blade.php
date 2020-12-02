@@ -13,8 +13,7 @@ SEARCH FILTER
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/payroll/storeOrUpdate">
-	@method('PUT')
+<form class="filters-box" method="GET" action="/payroll/filter">
 	@csrf
 	<label for="date">Month & Year</label>
 	<input type="month" id="date" name="date" value="{{ substr($monthly_salaries->first()->date, 0, 7) }}" max="{{ date('Y-m') }}">

@@ -55,8 +55,8 @@ Route::middleware('auth')->group(function() {
 
 	// Index
 	Route::get('/daily_time_records', 'DailyTimeRecordsController@index');
-	// Store
-	Route::post('/daily_time_records/store', 'DailyTimeRecordsController@store');
+	// Filter
+	Route::get('/daily_time_records/filter', 'DailyTimeRecordsController@filter');
 
 	////////// EMPLOYEES
 
@@ -113,8 +113,8 @@ Route::middleware('auth')->group(function() {
 
 	// Read
 	Route::get('/leave_annual', 'AnnualLeavesController@index');
-	// Store or Update
-	Route::put('/leave_annual/storeOrUpdate', 'AnnualLeavesController@storeOrUpdate');
+	// Filter
+	Route::get('/leave_annual/filter', 'AnnualLeavesController@filter');
 
 	////////// LEAVE APPLICATIONS
 
@@ -154,8 +154,8 @@ Route::middleware('auth')->group(function() {
 
 	// Read
 	Route::get('/deductible_records', 'DeductibleRecordsController@index');
-	// Store
-	Route::post('/deductible_records/store', 'DeductibleRecordsController@store');
+	// Filter
+	Route::get('/deductible_records/filter', 'DeductibleRecordsController@filter');
 	// Edit 
 	Route::get('/deductible_records/{deductible_record}/edit', 'DeductibleRecordsController@edit'); 
 	// Update
@@ -165,8 +165,8 @@ Route::middleware('auth')->group(function() {
 
 	// Read
 	Route::get('/payroll', 'MonthlySalariesController@index');
+	// Filter
+	Route::get('/payroll/filter', 'MonthlySalariesController@filter');
 	// Show
 	Route::get('/payroll/{monthly_salary}', 'MonthlySalariesController@show');
-	// Store and Update
-	Route::put('/payroll/storeOrUpdate', 'MonthlySalariesController@storeOrUpdate');
 });

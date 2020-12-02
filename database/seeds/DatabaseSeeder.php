@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         	EmployeesTableSeeder::class,
             DeductiblesTableSeeder::class,
             LeaveCategoriesTableSeeder::class,
-            LeaveApplicationsTableSeeder::class
+            LeaveApplicationsTableSeeder::class,
+            DailyTimeRecordsTableSeeder::class
         ]);
     }
 }

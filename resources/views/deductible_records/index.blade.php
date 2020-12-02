@@ -14,7 +14,7 @@ SEARCH FILTERS
 
 @section('filters')
 <div class="filters">
-	<form class="filters-box" method="POST" action="/deductible_records/store">
+	<form class="filters-box" method="GET" action="/deductible_records/filter">
 		@csrf
 		<label for="deductible">Deductible</label>
 		<select name="deductible_id" id="type" autofocus required>

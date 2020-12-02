@@ -15,7 +15,7 @@ class MonthlySalariesController extends Controller
     	return view('payroll.index');
     }
 
-    public function storeOrUpdate() {
+    public function filter() {
         $employees = Employee::get();
         if(!$employees->isEmpty()) { // If there are employees
         	foreach($employees as $employee) {
@@ -54,8 +54,10 @@ class MonthlySalariesController extends Controller
     			$monthly_salary->second_cutoff_pay = ($employee->position->monthly_salary - $totalDeductionAmount)/2;
     			$monthly_salary->save();
         	}
-    		$monthly_salaries = MonthlySalary::where(['date' => request()->date."-01"])->get();
-    		return view('payroll.storeOrUpdate', compact('monthly_salaries', 'employees'));
+    		$monthly_salaries = MonthlySalary::where(['date' => request()->date."-01"])->join('employees', 'employees.id', '=', 'monthly_salaries.employee_id')
+                ->orderBy('employees.first_name', 'ASC')
+                ->get();
+    		return view('payroll.filter', compact('monthly_salaries', 'employees'));
         } else {
             Return back()->withErrors([
                 'error' => 'An employee has to be registered first.'

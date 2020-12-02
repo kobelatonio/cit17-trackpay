@@ -63,5 +63,9 @@ Leave Applications
 		</tbody>
 	</table>
 </div>
+
+<div class="pagination">
+	<div class="previous">{{ $leave_applications->links() }}</div>
+</div>
 @endif
 @endsection

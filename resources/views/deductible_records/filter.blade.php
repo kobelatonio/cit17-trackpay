@@ -13,7 +13,7 @@ SEARCH FILTERS
 @endsection
 
 @section('filters')
-<form class="filters-box" method="POST" action="/deductible_records/store">
+<form class="filters-box" method="GET" action="/deductible_records/filter">
 	@csrf
 	<label for="deductible">Deductible</label>
 	<select name="deductible_id" id="type" required>
@@ -59,5 +59,9 @@ SEARCH FILTERS
 			@endforeach
 		</tbody>
 	</table>
+</div>
+
+<div class="pagination">
+	<div class="previous">{{ $deductible_records->appends(request()->input())->links() }}</div>
 </div>
 @endsection

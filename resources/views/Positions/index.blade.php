@@ -51,5 +51,9 @@ Job Positions
 		</tbody>
 	</table>
 </div>
+
+<div class="pagination">
+	<div class="previous">{{ $positions->links() }}</div>
+</div>
 @endif
 @endsection

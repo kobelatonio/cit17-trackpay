@@ -14,7 +14,7 @@ class DeductibleRecordsController extends Controller
     	return view('deductible_records.index', compact('deductibles'));
     }
 
-    public function store() {
+    public function filter() {
         $employees = Employee::get();
         $deductibles = Deductible::get();
         if(!$employees->isEmpty()) {
@@ -37,8 +37,11 @@ class DeductibleRecordsController extends Controller
         		}
         	}
             // Get all deductible records based on the date and deductible type from the request
-        	$deductible_records = DeductibleRecord::where(["date" => request()->date."-01", "deductible_id" => request()->deductible_id])->get();
-    		return view('deductible_records.store', compact('deductible_records', 'deductibles'));
+        	$deductible_records = DeductibleRecord::where(["date" => request()->date."-01", "deductible_id" => request()->deductible_id])
+                ->join('employees', 'employees.id', '=', 'deductible_records.employee_id')
+                ->orderBy('employees.first_name', 'ASC')
+                ->paginate(10);
+    		return view('deductible_records.filter', compact('deductible_records', 'deductibles'));
         } else {
             return back()->withErrors([
                 'error' => 'An employee has to be registered first.'

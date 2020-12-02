@@ -9,7 +9,7 @@ class PositionsController extends Controller
 {
     public function index()
     {
-        $positions = Position::get();
+        $positions = Position::orderBy('title', 'ASC')->paginate(10);
         return view('positions.index', compact('positions'));
     }
 

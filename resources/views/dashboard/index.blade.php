@@ -28,12 +28,13 @@ TrackPay - Admin Home
 	<div class="birthdays">
 		<table class="birthday">
 			<tr>
-				<th colspan="2">Employees with birthdays in current month</th>
+				<th colspan="3">Employees with birthdays in current month</th>
 			</tr>
 			@foreach($employeesWithBirthday as $employee)
 			<tr>
 				<td>{{ $employee->full_name }}</td>
 				<td>{{ date('F d, Y', strtotime($employee->birthdate)) }}</td>
+				<td>{{ $employee->nth_birthday }} Birthday</td>
 			</tr>
 			@endforeach
 		</table>

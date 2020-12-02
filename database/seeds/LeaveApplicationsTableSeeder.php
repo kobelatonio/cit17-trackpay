@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
-class DeductibleRecordsTableSeeder extends Seeder
+
+
+class LeaveApplicationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class DeductibleRecordsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\DeductibleRecord::class, 50)->create();
+        factory(\App\LeaveApplication::class, 50)->create();
     }
 }

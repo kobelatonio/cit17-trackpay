@@ -60,5 +60,8 @@ Employees
 		</tbody>
 	</table>
 </div>
+<div class="pagination">
+	<div class="previous">{{ $employees->links() }}</div>
+</div>
 @endif
 @endsection

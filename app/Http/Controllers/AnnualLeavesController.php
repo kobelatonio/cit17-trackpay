@@ -17,7 +17,7 @@ class AnnualLeavesController extends Controller
     	return view('leave_annual.index', compact('leaveCategories'));
     }
 
-    public function storeOrUpdate() {
+    public function filter() {
     	$employees = Employee::get();
 		$leave_categories = LeaveCategory::get();
     	if(!$employees->isEmpty()) {
@@ -56,8 +56,11 @@ class AnnualLeavesController extends Controller
 				}
 	    	}
 	    	// Get all annual leave records based on the leave category from the request
-			$annual_leaves = AnnualLeave::where('leave_category_id', request()->leave_category_id)->get();
-			return view('leave_annual.storeOrUpdate', compact('annual_leaves', 'leave_categories'));
+			$annual_leaves = AnnualLeave::where('leave_category_id', request()->leave_category_id)
+				->join('employees', 'employees.id', '=', 'annual_leaves.employee_id')
+				->orderBy('employees.first_name', 'ASC')
+				->paginate(10);
+			return view('leave_annual.filter', compact('annual_leaves', 'leave_categories'));
 	    } else {
 			return back()->withErrors([
                 'error' => 'An employee should be registered first.'
