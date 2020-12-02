@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
         	UsersTableSeeder::class,
         	PositionsTableSeeder::class,
         	EmployeesTableSeeder::class,
-        	DeductiblesTableSeeder::class
+            DeductiblesTableSeeder::class,
+            LeaveCategoriesTableSeeder::class
         ]);
     }
 }
