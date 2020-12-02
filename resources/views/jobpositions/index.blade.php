@@ -10,6 +10,7 @@ Job Positions
 
 @section('addbtn')
 <a class="add" href="/positions/create">Add a job position</a>
+@include('layouts.errors')
 @endsection
 
 @section('table')
