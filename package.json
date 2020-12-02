@@ -1,8 +1,6 @@
 {
     "private": true,
     "scripts": {
-        "build": "cd client && npm run build",
-        "install": "cd client && npm install",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
