@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\user as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Employee extends Authenticatable
 {
