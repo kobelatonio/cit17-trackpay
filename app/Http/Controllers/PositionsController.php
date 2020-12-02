@@ -32,6 +32,7 @@ class PositionsController extends Controller
             'shift_start' => 'required',
             'shift_end' => 'required'
         ]);
+        dd($validated_fields);
         DB::table('positions')->insert($validated_fields);
         return redirect('/positions');
     }
