@@ -10,17 +10,17 @@ class PositionsController extends Controller
     public function index()
     {
         $positions = Position::orderBy('title', 'ASC')->paginate(10);
-        return view('positions.index', compact('positions'));
+        return view('jobpositions.index', compact('positions'));
     }
 
     public function create()
     {
-        return view('positions.create');
+        return view('jobpositions.create');
     }
 
     public function show(Position $position)
     {
-        return view('positions.show', compact('position'));
+        return view('jobpositions.show', compact('position'));
     }
 
     public function store()
@@ -37,7 +37,7 @@ class PositionsController extends Controller
 
     public function edit(Position $position)
     {
-        return view('positions.edit', compact('position'));
+        return view('jobpositions.edit', compact('position'));
     }
 
     public function update(Position $position)
