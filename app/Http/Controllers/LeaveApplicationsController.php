@@ -13,7 +13,7 @@ class LeaveApplicationsController extends Controller
     {
     	$leave_applications = LeaveApplication::orderBy('start_date', 'DESC')
                 ->paginate(10);
-    	return view('leave_applications.index', compact('employees', 'leave_categories', 'leave_applications'));
+    	return view('leave_applications.index', compact('leave_applications'));
     }
 
     public function create()
